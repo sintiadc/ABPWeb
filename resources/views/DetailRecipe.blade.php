@@ -34,6 +34,9 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="UploadRecipe">CREATE YOUR RECIPE</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Calories">CALORIES</a>
+                    </li>
                     <!-- Baru Ditambahin -->
                     <li class="nav-item">
                         <!-- Dropdown dengan ikon profil -->

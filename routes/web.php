@@ -64,6 +64,10 @@ Route::middleware(['auth'])->group(function () {
         return view('Recipes');
     });
 
+    Route::get('/Calories', function () {
+        return view('Calories');
+    });
+
     Route::get('/Profil', function () {
         return view('Profil');
     });
