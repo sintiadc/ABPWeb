@@ -36,6 +36,7 @@
                     <div class="row">
                         <div class="col">
                             <h1 class="JudulSignUp py-5"><strong>Create your account</strong></h1>
+                            
 
                             <h5>Welcome!</h5><br>
                             <form method="post" action="{{ route('register.submit') }}"> <!-- Tentukan action untuk mengirimkan data ke controller -->

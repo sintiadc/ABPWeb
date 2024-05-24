@@ -29,12 +29,12 @@
                                 <div class="form-group">
                                     <label for="email">Email</label>
                                     <!-- Ganti input dengan elemen span -->
-                                    <input id="email" type="text" class="form-control" name="email" required autocomplete="email" autofocus/>
+                                    <input id="email" type="email" class="form-control" name="email" required autocomplete="email" autofocus/>
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Password</label>
                                     <!-- Ganti input dengan elemen span -->
-                                    <input id="password" type="text" class="form-control" name="password" required autocomplete="current-password"/>
+                                    <input id="password" type="password" class="form-control" name="password" required autocomplete="current-password"/>
                                 </div> 
                                 <br>
                                 <button id="login" type="submit" class="register btn">Login</button></br></br>
