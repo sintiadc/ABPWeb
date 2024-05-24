@@ -1,0 +1,182 @@
+nav{
+    background-color: #F5F1EC;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 100%;
+}
+.navbar-collapse{
+    background-color: #F5F1EC; /* Warna latar belakang untuk bagian collapsible (yang muncul saat toggler diklik) */
+}
+.navbar-brand{
+    width: 15%;
+}
+body{
+    background-color: #F5F1EC;
+}
+
+.container {
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-top: 4%;
+}
+
+/* Dari sini baru */
+/* Gaya CSS untuk dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Gaya CSS untuk teks "Hi, nama pengguna" */
+#profileText {
+    color: #6C7E46; /* Warna yang diinginkan */
+}
+
+/* Footer */
+
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@700&display=swap');
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0
+}
+
+ul>li {
+    padding: 4px;
+    color:#ffffff;
+}
+
+ul>li:hover {
+    color: #8dab4d;
+    cursor: pointer
+}
+
+hr {
+    border-width: 3px
+}
+
+.footer-text {
+    padding: 2% 7%
+}
+
+.social>i {
+    padding: 5%;
+    font-size: 15px
+}
+
+.social>i:hover {
+    color: #6C7E46;
+    cursor: pointer
+}
+
+.policy>div {
+    padding: 4px
+}
+
+.heading {
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: bold;
+    color: rgb(255, 255, 255)
+}
+
+.divider {
+    border-top: 2px solid
+}
+
+/* */
+.modal-dialog {
+    max-width: 500px; /* Atur lebar maksimum modal */
+    border-radius: 10px;
+}
+
+.modal-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal-header img {
+    margin-bottom: 10px; /* Jarak antara gambar dan teks */
+}
+
+.modal-title {
+    color: #000;
+    font-weight: bold;
+    text-align: center;
+}
+
+.modal-body {
+    text-align: center; /* Pusatkan teks pada badan modal */
+}
+
+.modal-footer {
+    border-top: none; /* Hapus garis atas pada footer modal */
+    justify-content: center; /* Pusatkan tombol pada footer modal */
+}
+
+.modal-footer button {
+    width: 25%; /* Atur lebar tombol footer */
+    border-radius: 10px;
+}
+
+.btn-cancle {
+    background-color: #D12D2D; /* Warna latar belakang untuk tombol cancel */
+    color: #fff; /* Warna teks pada tombol cancel */
+}
+
+.btn-logout {
+    background-color: #48AA33; /* Warna latar belakang untuk tombol logout */
+    color: #fff; /* Warna teks pada tombol logout */
+}
+
+.btn-close {
+    color: #6c757d; /* Warna ikon tombol close */
+}
+
+.btn-close:hover {
+    color: #343a40; /* Warna ikon tombol close saat hover */
+}
+
+body{
+    background-color: #F5F1EC;
+}
+
+.btn-done {
+    background-color: #6C7E46; /* Warna latar belakang tombol */
+    color: #fff; /* Warna teks pada tombol */
+    border: none; /* Hapus border */
+    border-radius: 10px; /* Radius sudut tombol */
+    padding: 10px 20px; /* Padding di dalam tombol */
+    font-size: 16px; /* Ukuran teks */
+    cursor: pointer; /* Tampilan kursor saat mengarah ke tombol */
+}
+
+.btn-done:hover {
+    background-color: #98b367; /* Warna latar belakang tombol saat hover */
+}
