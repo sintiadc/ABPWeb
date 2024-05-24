@@ -15,14 +15,14 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         User::create([
-            'name' => 'John Doe',
-            'username' => 'johndoe',
-            'email' => 'johndoe@example.com',
-            'password' => bcrypt('password'),
-            'umur' => 30,
-            'jenis_kelamin' => 'Laki-laki',
-            'berat_badan' => 70,
-            'tinggi_badan' => 175,
+            'name' => 'Sintia Dwi Cahya',
+            'username' => 'sintiadc',
+            'email' => 'sintia@gmail.com',
+            'password' => bcrypt('sintia123'),
+            'umur' => 15,
+            'jenis_kelamin' => 'Perempuan',
+            'berat_badan' => 50,
+            'tinggi_badan' => 165,
         ]);
     }
 }
