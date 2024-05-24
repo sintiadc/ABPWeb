@@ -130,13 +130,16 @@
         </div>
         <div class="col-3">
             <div class="profile-details">
-                <a href="profil">
-                    <img src="/image/profile.png" alt="profile" width="30" height="30"> General</a>
-                <a href="edit_profil">
-                    <img src="/image/seting.png" alt="profile" width="30" height="30"> Edit Profile</a>
-                <a class="active" href="recipe">
-                    <img src="/image/recipe-book.png" alt="profile" width="30" height="30"> My Recipe</a>
-            </div>
+                    <a href="Profil">
+                        <img src="/image/profile.png" alt="profile" width="30" height="30">
+                        General</a>
+                    <a href="EditProfile">
+                        <img src="/image/seting.png" alt="profile" width="30" height="30">
+                        Edit Profile</a>
+                    <a class="active" href="MyRecipe">
+                        <img src="/image/recipe-book.png" alt="profile" width="30" height="30">
+                        My Recipe</a>
+                </div>
         </div>
         <div class="col-9" id="recipe-container">
             <div class="row">

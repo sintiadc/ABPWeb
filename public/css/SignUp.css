@@ -26,6 +26,10 @@ h5{
     border-radius: 10px;
 }
 
+.form-group >select{
+    border-radius: 10px;
+}
+
 .register.btn{
     width: 100%; /* Membuat tombol mengisi lebar form */
     background-color: #6C7E46; /* Ubah warna tombol saat dihover */
@@ -58,6 +62,7 @@ h5{
 .form-control {
     border-bottom: none; /* Menghilangkan border bottom */
 }
+
 
 /* Menambahkan border bottom saat input field memiliki kesalahan */
 .form-control.is-invalid {

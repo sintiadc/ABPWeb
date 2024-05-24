@@ -34,6 +34,11 @@ class AuthController extends Controller
         $user = new User();
         $user->email = $request->email;
         $user->username = $request->username;
+        $user->name = $request->name;
+        $user->umur = $request->umur;
+        $user->jenis_kelamin = $request->jenis_kelamin;
+        $user->berat_badan = $request->berat_badan;
+        $user->tinggi_badan = $request->tinggi_badan;
         $user->password = Hash::make($request->password); // Enkripsi password sebelum disimpan
         $user->save();
 

@@ -41,7 +41,7 @@
                 </div>
                 <div class="col">
                     <img src="/image/picChildLP2.png" alt="picChild2 Landing Page" style="max-width: 110px; height: auto;"> <br>
-                    <a style="color:#6C7E46;">Display calorie details of food ingredients and allow you to efficiently filter by food type and health needs.</a>
+                    <a style="color:#6C7E46;">Monitor your caloric intake quickly and accurately. Achieve your health goals more effectively</a>
                 </div>
                 <div class="col">
                     <img src="/image/picChildLP3.png" alt="picChild3 Landing Page" style="max-width: 90px; height: auto;"> <br>
