@@ -200,7 +200,7 @@
                                     <span id="Meal">Breakfast</span></br></br>                                     
                                 </div>
                             </div>
-                            <button id="View" type="" class="view btn ml-auto d-flex justify-content-between">View Details</button>
+                            <button href="/DetailRecipe" id="View" type="" class="view btn ml-auto d-flex justify-content-between">View Details</button>
                         </div>
                     </div>
                 </div>
@@ -232,7 +232,7 @@
                                     <span id="Meal">Breakfast</span></br></br>                                     
                                 </div>
                             </div>
-                            <button id="View" type="" class="view btn ml-auto d-flex justify-content-between">View Details</button>
+                            <button href="/DetailRecipe" id="View" type="" class="view btn ml-auto d-flex justify-content-between">View Details</button>
                         </div>
                     </div>
                 </div>
@@ -264,7 +264,7 @@
                                     <span id="Meal">Breakfast</span></br></br>                                     
                                 </div>
                             </div>
-                            <button id="View" type="" class="view btn ml-auto d-flex justify-content-between">View Details</button>
+                            <button href="/DetailRecipe" id="View" type="" class="view btn ml-auto d-flex justify-content-between">View Details</button>
                         </div>
                     </div>
                 </div>
@@ -338,7 +338,14 @@
     </footer>
     <!-- End Section Footer-->
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+
+    <script>
+        document.getElementById('View').addEventListener('click', function() {
+            // Arahkan pengguna ke halaman DetailRecipe
+            window.location.href = "/DetailRecipe";
+        });
+    </script>
 
     <script>
         function logoutAndRedirect() {
@@ -349,7 +356,7 @@
             window.location.href = '/login'; // Redirect ke URL logout
         }
     </script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     
 
 </body>

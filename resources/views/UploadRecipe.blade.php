@@ -117,7 +117,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <span class="directory-text">Home / Create Your Recipe</span>
+                <a href="/Home">Home</a> / <a href="/UploadRecipe">Create Your Recipe</a>
             </div>
         </div>
     </div>

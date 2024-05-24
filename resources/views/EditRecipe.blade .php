@@ -117,7 +117,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <span class="directory-text">Home / My Account / My Recipe / Edit Recipe </span>
+                <a href="/Home">Home</a> / <a href="/Profil">My Account</a> / <a href="/MyRecipe">My Recipe</a> / <a href="/EditRecipe">Edit Recipe</a>
             </div>
         </div>
     </div>

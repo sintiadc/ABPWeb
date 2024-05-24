@@ -120,7 +120,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <span class="directory-text">Home / My Account / Edit Profile</span>
+                <a href="/Home">Home</a> / <a href="/Profil">My Account</a> / <a href="/EditProfile">Edit Profile</a>
             </div>
         </div>
     </div>

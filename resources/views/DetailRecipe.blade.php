@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equid="X-UA_Compatible" content="ie=edge">
-    <title>Login</title>
+    <title>DetailRecipe</title>
         <!-- Bootstrap CSS --> 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Tautan ke jQuery (diperlukan oleh Bootstrap) -->
@@ -119,7 +119,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <span class="directory-text">Home / Recipes / Detail Recipe</span>
+            <a href="/Home">Home</a> / <a href="/Recipes">Recipes</a> / <a href="/DetailRecipe">Detial Recipe</a> 
             </div>
         </div>
     </div>
