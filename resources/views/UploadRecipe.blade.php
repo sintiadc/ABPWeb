@@ -43,7 +43,7 @@
                         <div class="dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img src="/image/picProfil.png" alt="Profile Icon"> <!-- Ganti picProfil.png dengan gambar ikon profil Anda -->
-                                <span id="profileText">Hi, {{ Auth::user()->name }}<span id="usernamePlaceholder"></span></span>
+                                <span id="profileText">Hi, {{ Auth::user()->username }}<span id="usernamePlaceholder"></span></span>
                             </a>
                             <div class="dropdown-content" aria-labelledby="navbarDropdown">
                                 <!-- Isi dropdown menu dengan gambar ikon -->
