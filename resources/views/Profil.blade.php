@@ -169,27 +169,27 @@
                         </div>
                     </div> <br>
                     <div class="input">
-                        <label for="umur" class="form-label">Umur</label>
+                        <label for="Age" class="form-label">Age</label>
                         <div class="input-with-icon">
-                            <span id="umur" class="form-control input-custom">30</span>
+                            <span id="Age" class="form-control input-custom">30</span>
                         </div>
                     </div> <br>
                     <div class="input">
-                        <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
+                        <label for="Gender" class="form-label">Gender</label>
                         <div class="input-with-icon">
-                            <span id="jenis_kelamin" class="form-control input-custom">Laki-laki</span>
+                            <span id="Gender" class="form-control input-custom">Laki-laki</span>
                         </div>
                     </div> <br>
                     <div class="input">
-                        <label for="berat_badan" class="form-label">Berat Badan</label>
+                        <label for="BodyWeight" class="form-label">Body Weight</label>
                         <div class="input-with-icon">
-                            <span id="berat_badan" class="form-control input-custom">70 kg</span>
+                            <span id="BodyWeight" class="form-control input-custom">70 kg</span>
                         </div>
                     </div> <br>
                     <div class="input">
-                        <label for="tinggi_badan" class="form-label">Tinggi Badan</label>
+                        <label for="Body Height" class="form-label">Body Height</label>
                         <div class="input-with-icon">
-                            <span id="tinggi_badan" class="form-control input-custom">180 cm</span>
+                            <span id="BodyHeight" class="form-control input-custom">180 cm</span>
                         </div>
                     </div> <br>
                 </div>

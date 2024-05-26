@@ -57,27 +57,27 @@
                                     <input id="username" type="username" class="form-control" name="username" placeholder="User Name" />
                                 </div>
                                 <div class="form-group">
-                                    <label for="Umur">Umur</label>
+                                    <label for="Age">Age</label>
                                     <!-- Ganti input dengan elemen span -->
-                                    <input id="umur" type="umur" class="form-control" name="umur" placeholder="Umur" />
+                                    <input id="Age" type="Age" class="form-control" name="Age" placeholder="Age" />
                                 </div>
                                 <div class="form-group">
-                                    <label for="jenis_kelamin">Jenis Kelamin</label>
-                                    <select id="jenis_kelamin" class="form-control" name="jenis_kelamin">
-                                        <option value="" selected disabled>Pilih Jenis Kelamin</option>
-                                        <option value="Laki-laki">Laki-laki</option>
-                                        <option value="Perempuan">Perempuan</option>
+                                    <label for="Gender">Gender</label>
+                                    <select id="Gender" class="form-control" name="Gender">
+                                        <option value="" selected disabled>Choose Your Gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="BeratBadan">Berat Badan</label>
+                                    <label for="Body Weight">Body Weight</label>
                                     <!-- Ganti input dengan elemen span -->
-                                    <input id="beratbadan" type="beratbadan" class="form-control" name="berat_badan" placeholder="Berat Badan" />
+                                    <input id="BodyWeight" type="BodyWeight" class="form-control" name="BodyWeight" placeholder="Body Weight" />
                                 </div>
                                 <div class="form-group">
-                                    <label for="TinggiBadan">Tinggi Badan</label>
+                                    <label for="BodyHeight">Body Height</label>
                                     <!-- Ganti input dengan elemen span -->
-                                    <input id="tinggibadan" type="tinggibadan" class="form-control" name="tinggi_badan" placeholder="Tinggi Badan" />
+                                    <input id="BodyHeight" type="BodyHeight" class="form-control" name="BodyHeight" placeholder="BodyHeight" />
                                 </div>
                                 <div class="form-group">
                                     <label for="Password">Password</label>
