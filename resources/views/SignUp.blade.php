@@ -47,9 +47,9 @@
                                     <input id="email" type="email" class="form-control" name="email" placeholder="Email" />
                                 </div>
                                 <div class="form-group">
-                                    <label for="Name">Nama</label>
+                                    <label for="Name">Name</label>
                                     <!-- Ganti input dengan elemen span -->
-                                    <input id="name" type="name" class="form-control" name="name" placeholder="Nama" />
+                                    <input id="name" type="name" class="form-control" name="name" placeholder="Name" />
                                 </div>
                                 <div class="form-group">
                                     <label for="UserName">User Name</label>
@@ -59,25 +59,25 @@
                                 <div class="form-group">
                                     <label for="Age">Age</label>
                                     <!-- Ganti input dengan elemen span -->
-                                    <input id="Age" type="Age" class="form-control" name="Age" placeholder="Age" />
+                                    <input id="umur" type="Age" class="form-control" name="umur" placeholder="Age" />
                                 </div>
                                 <div class="form-group">
                                     <label for="Gender">Gender</label>
-                                    <select id="Gender" class="form-control" name="Gender">
+                                    <select id="jenis_kelamin" class="form-control" name="jenis_kelamin">
                                         <option value="" selected disabled>Choose Your Gender</option>
-                                        <option value="Male">Male</option>
-                                        <option value="Female">Female</option>
+                                        <option value="Laki-laki">Male</option>
+                                        <option value="Perempuan">Female</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="Body Weight">Body Weight</label>
                                     <!-- Ganti input dengan elemen span -->
-                                    <input id="BodyWeight" type="BodyWeight" class="form-control" name="BodyWeight" placeholder="Body Weight" />
+                                    <input id="berat_badan" type="BodyWeight" class="form-control" name="berat_badan" placeholder="Body Weight" />
                                 </div>
                                 <div class="form-group">
                                     <label for="BodyHeight">Body Height</label>
                                     <!-- Ganti input dengan elemen span -->
-                                    <input id="BodyHeight" type="BodyHeight" class="form-control" name="BodyHeight" placeholder="BodyHeight" />
+                                    <input id="tinggi_badan" type="BodyHeight" class="form-control" name="tinggi_badan" placeholder="BodyHeight" />
                                 </div>
                                 <div class="form-group">
                                     <label for="Password">Password</label>
@@ -128,15 +128,24 @@
         </div>
     </div>
 
-    <script>
-        $(document).ready(function() {
-            $('#successModal').modal('show');
-        });
 
-        $('#okButton').click(function() {
-            window.location.href = "{{ route('login') }}";
-        });
+    <script>
+    $(document).ready(function() {
+        // Periksa apakah ada pesan flash sukses
+        @if(Session::has('success'))
+            // Tampilkan modal saat halaman dimuat
+            $('#successModal').modal('show');
+        @endif
+    });
+
+    // Fungsi untuk menangani klik tombol OK
+    $('#okButton').click(function() {
+        // Arahkan pengguna ke halaman login
+        window.location.href = "{{ route('login') }}";
+    });
     </script>
+
+
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
