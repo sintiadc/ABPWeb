@@ -36,7 +36,6 @@
                     <div class="row">
                         <div class="col">
                             <h1 class="JudulSignUp py-5"><strong>Create your account</strong></h1>
-                            
 
                             <h5>Welcome!</h5><br>
                             <form method="post" action="{{ route('register.submit') }}"> <!-- Tentukan action untuk mengirimkan data ke controller -->
@@ -57,12 +56,12 @@
                                     <input id="username" type="username" class="form-control" name="username" placeholder="User Name" />
                                 </div>
                                 <div class="form-group">
-                                    <label for="Age">Age</label>
+                                    <label for="Umur">Age</label>
                                     <!-- Ganti input dengan elemen span -->
-                                    <input id="umur" type="Age" class="form-control" name="umur" placeholder="Age" />
+                                    <input id="umur" type="umur" class="form-control" name="umur" placeholder="Age" />
                                 </div>
                                 <div class="form-group">
-                                    <label for="Gender">Gender</label>
+                                    <label for="jenis_kelamin">Gender</label>
                                     <select id="jenis_kelamin" class="form-control" name="jenis_kelamin">
                                         <option value="" selected disabled>Choose Your Gender</option>
                                         <option value="Laki-laki">Male</option>
@@ -70,14 +69,14 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="Body Weight">Body Weight</label>
+                                    <label for="BeratBadan">Body Weight</label>
                                     <!-- Ganti input dengan elemen span -->
-                                    <input id="berat_badan" type="BodyWeight" class="form-control" name="berat_badan" placeholder="Body Weight" />
+                                    <input id="beratbadan" type="beratbadan" class="form-control" name="berat_badan" placeholder="Body Weight" />
                                 </div>
                                 <div class="form-group">
-                                    <label for="BodyHeight">Body Height</label>
+                                    <label for="TinggiBadan">Body Height</label>
                                     <!-- Ganti input dengan elemen span -->
-                                    <input id="tinggi_badan" type="BodyHeight" class="form-control" name="tinggi_badan" placeholder="BodyHeight" />
+                                    <input id="tinggibadan" type="tinggibadan" class="form-control" name="tinggi_badan" placeholder="Body Height" />
                                 </div>
                                 <div class="form-group">
                                     <label for="Password">Password</label>
@@ -128,24 +127,15 @@
         </div>
     </div>
 
-
     <script>
-    $(document).ready(function() {
-        // Periksa apakah ada pesan flash sukses
-        @if(Session::has('success'))
-            // Tampilkan modal saat halaman dimuat
+        $(document).ready(function() {
             $('#successModal').modal('show');
-        @endif
-    });
+        });
 
-    // Fungsi untuk menangani klik tombol OK
-    $('#okButton').click(function() {
-        // Arahkan pengguna ke halaman login
-        window.location.href = "{{ route('login') }}";
-    });
+        $('#okButton').click(function() {
+            window.location.href = "{{ route('login') }}";
+        });
     </script>
-
-
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
