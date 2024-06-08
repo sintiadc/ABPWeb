@@ -206,6 +206,7 @@ hr {
     background-color: #6C7E46; /* Ubah warna tombol saat dihover */
     border-radius: 10px;
     outline: none;
+    width: 25%;
     color: white;
 }
 

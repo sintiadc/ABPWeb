@@ -46,19 +46,22 @@ class AuthController extends Controller
         return redirect()->route('login')->with('success', 'Registration successful! Please login.');
     }
 
-    public function getUserId()
-{
-    // Get the authenticated user
-    $user = Auth::user();
+//     public function getUserId()
+// {
+//     // Get the authenticated user
+//     $user = Auth::user();
 
-    // Check if the user is authenticated
-    if (!$user) {
-        // If the user is not authenticated, return a 401 Unauthorized response
-        return response()->json(['message' => 'Unauthorized.'], 401);
+//     // Check if the user is authenticated
+//     if (!$user) {
+//         // If the user is not authenticated, return a 401 Unauthorized response
+//         return response()->json(['message' => 'Unauthorized.'], 401);
+//     }
+
+//     // Return the user ID
+//     return response()->json(['id' => $user->id], 200);
+// }
+public function getUserId()
+    {
+        return auth()->id();
     }
-
-    // Return the user ID
-    return response()->json(['id' => $user->id], 200);
-}
-
 }

@@ -13,7 +13,7 @@
 
     <!-- Tautan ke Bootstrap JavaScript -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="/css/MyRecipe.css">
+    <link rel="stylesheet" href="/css/Bookmark.css">
     <link rel="stylesheet" href="/css/Home.css">
 
 </head>
@@ -139,16 +139,16 @@
                     <a href="/EditProfile">
                         <img src="/image/seting.png" alt="profile" width="30" height="30">
                         Edit Profile</a>
-                    <a class="active" href="/MyRecipe">
+                    <a href="/MyRecipe">
                         <img src="/image/recipe-book.png" alt="profile" width="30" height="30">
                         My Recipe</a>
-                    <a href="/Bookmark">
+                    <a class="active" href="/Bookmark">
                         <img src="/image/bookmark.png" alt="profile" width="30" height="30">
                     Bookmark</a>
                 </div>
         </div>
-        <div class="col-9" >
-            <div class="row" id="recipe-container">
+        <div class="col-9" id="recipe-container">
+            <div class="row">
                 <div class="col-12 col-md-4">
                     <div class="card-abc h-85">
                         <div class="card-img-container">
@@ -157,8 +157,8 @@
                         <div class="card-body text-center">
                             <h5 class="card-title"><strong>Chimichurri Sreak</strong></h5>
                             <div class="button-container">
-                                <button class="btn btn1" type="button" data-toggle="modal" data-target="#deleteModal">Delete</button>
-                                <button class="btn btn2" type="button" onclick="window.location.href='#'">Edit</button>
+                            <button class="btn btn1" type="button" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                                <button class="btn btn2" type="button" onclick="window.location.href='/DetailRecipe'">View Detail</button>
                             </div>
                         </div>
                     </div>
@@ -179,13 +179,12 @@
                 .then(data => {
                     /// Get the container where the recipes will be displayed
                     const recipeContainer = document.getElementById('recipe-container');
-                    recipeContainer.innerHTML = ''; // Clear the container first
 
                     // Iterate over the data and create HTML elements for each recipe
                     data.forEach(recipe => {
                         // Create the card element
                         const cardDiv = document.createElement('div');
-                        cardDiv.classList.add('col-12', 'col-md-4', 'col-lg-4', 'mb-4');
+                        cardDiv.classList.add('col-12', 'col-md-4');
 
                         // Create the card content
                         cardDiv.innerHTML = `
@@ -299,8 +298,8 @@
                 </div>
         </div>            
     </footer>
-     <!-- Modal Delete Start -->
-     <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <!-- Modal Delete Start -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content shadow-lg">
                 <div class="modal-header bg-gray-200">

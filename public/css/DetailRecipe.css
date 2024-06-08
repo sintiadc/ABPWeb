@@ -242,3 +242,23 @@ hr {
 .btn-done:hover {
     background-color: #98b367; /* Warna latar belakang tombol saat hover */
 }
+
+
+.recipe-details {
+    position: relative; /* Ensure positioning context for the bookmark */
+}
+
+.recipe-details {
+    position: relative;
+}
+.bookmark-link {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: gray;
+    cursor: pointer;
+}
+.bookmark-link.active {
+    color: rgb(15, 174, 15);
+}

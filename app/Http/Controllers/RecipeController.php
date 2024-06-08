@@ -31,12 +31,14 @@ class RecipeController extends Controller
     }
 
     public function createRecipe(Request $request)
-    {
+{
         // Validate the incoming request data
+      
         $newRecipe = $request->validate([
             'name' => 'required|string',
+            'picture' => 'required|string',
             'calories' => 'required|numeric',
-            'ingredients' => 'required|numeric',
+            'ingredients' => 'required|string',
             'servings' => 'required|numeric',
             'prep_time' => 'required|string',
             'meal' => 'required|string',
@@ -44,27 +46,40 @@ class RecipeController extends Controller
             'detail_resep' => 'required|string',
             'like' => 'required|numeric'
         ]);
-
+        $newRecipe = [
+            'name' => $request->name,
+            'picture' => $request->picture,
+            'calories' => $request->calories,
+            'ingredients' => $request->ingredients,
+            'servings' => $request->servings,
+            'prep_time' => $request->prep_time,
+            'meal' => $request->meal,
+            'health' => $request->health,
+            'detail_resep' => $request->detail_resep,
+            'like' => $request->like
+        ];
         // Create the new recipe
         $resep = Resep::create($newRecipe);
 
         // Create an instance of MyResepController
         $myResepController = new MyResepController();
-        $authController = new AuthController();
+
+        // Get the user ID
+        $userId = 1;  // Hardcoded for now, will be replaced with the actual user ID
 
         // Create a new request object
-        $request = new Request([
-            'id_user' => $authController->getUserId(), // Change the user ID accordingly
+        $myRequest = new Request([
+            'id_user' => $userId,
             'id_resep' => $resep->id,
-            'Tipe' => 'MyResep' // Change the type accordingly
+            'Tipe' => 'MyResep'
         ]);
 
         // Call the createMyResep method from MyResepController
-        $myResepController->createMyResep($request);
-
+        $myResepController->createMyResep($myRequest);
 
         return response()->json($resep, 201);  // Return the created recipe as JSON with a 201 status code
     }
+
 
     public function getRecipe()
     {
@@ -79,6 +94,21 @@ class RecipeController extends Controller
 
         // If there are recipes, return them as a JSON response with a 200 status code
         return response()->json($recipes, 200);
+    }
+
+    public function getRecipeById($id)
+    {
+        // Fetch the recipe by its ID from the database
+        $recipe = Resep::find($id);
+
+        // Check if the recipe exists
+        if (!$recipe) {
+            // If the recipe does not exist, return a 404 response
+            return response()->json(['message' => 'Recipe not found.'], 404);
+        }
+
+        // If the recipe exists, return it as a JSON response with a 200 status code
+        return response()->json($recipe, 200);
     }
 
     public function getRecipeByLike()
@@ -147,20 +177,8 @@ class RecipeController extends Controller
             return response()->json(['message' => 'Recipe not found.'], 404);
         }
 
-        // Validate the incoming request data
-        $validatedData = $request->validate([
-            'name' => 'required|string',
-            'calories' => 'required|numeric',
-            'ingredients' => 'required|numeric',
-            'servings' => 'required|numeric',
-            'prep_time' => 'required|string',
-            'meal' => 'required|string',
-            'health' => 'required|string',
-            'detail_resep' => 'required|string',
-        ]);
-
         // Update the recipe details
-        $recipe->update($validatedData);
+        $recipe->update($request->all());
 
         // Return the updated recipe as JSON with a 200 status code
         return response()->json($recipe, 200);

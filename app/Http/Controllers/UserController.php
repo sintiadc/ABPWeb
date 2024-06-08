@@ -35,28 +35,21 @@ class UserController extends Controller
     public function getUser()
     {
         // Fetch all recipes from the database
-        $recipes = User::all();
+        $user = User::all();
 
         // Check if there are any recipes
-        if ($recipes->isEmpty()) {
+        if ($user->isEmpty()) {
             // If there are no recipes, return an empty response with a 404 status code
             return response()->json(['message' => 'No User found.'], 404);
         }
 
         // If there are recipes, return them as a JSON response with a 200 status code
-        return response()->json($recipes, 200);
+        return response()->json($user, 200);
     }
-
-    public function updateUser(Request $request, $id)
+    public function getUserById($id)
     {
-        // Create an instance of AuthController
-        $authController = new AuthController();
-
-        // Get the authenticated user ID
-        $userId = $authController->getUserId();
-
-        // Check if the user exists
-        $user = User::find($userId);
+        // Get the user by ID
+        $user = User::find($id);
 
         // Check if the user exists
         if (!$user) {
@@ -64,23 +57,30 @@ class UserController extends Controller
             return response()->json(['message' => 'User not found.'], 404);
         }
 
-        // Validate the incoming request data
-        $validatedData = $request->validate([
-            'name' => 'required|string',
-            'email' => 'required|email|unique:users,email,' . $id,
-            'username' => 'required|string|unique:users,username,' . $id,
-            'password' => 'nullable|string|min:6',
-        ]);
+        // Return the user as JSON with a 200 status code
+        return response()->json($user, 200);
+    }
 
+    public function updateUser(Request $request)
+    {
+
+        // Check if the user exists
+        $user = User::find(1);
+
+        // Check if the user exists
+        if (!$user) {
+            // If the user doesn't exist, return a 404 response
+            return response()->json(['message' => 'User not found.'], 404);
+        }
+        $validatedData = $request;
         // Update the user details
         $user->name = $validatedData['name'];
+        $user->umur = $validatedData['umur'];
+        $user->jenis_kelamin = $validatedData['jenis_kelamin'];
+        $user->berat_badan = $validatedData['berat_badan'];
+        $user->tinggi_badan = $validatedData['tinggi_badan'];
         $user->email = $validatedData['email'];
         $user->username = $validatedData['username'];
-
-        if(isset($validatedData['password'])){
-            $user->password = Hash::make($validatedData['password']);
-        }
-
         $user->save();
 
         // Return the updated user as JSON with a 200 status code

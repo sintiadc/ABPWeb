@@ -123,20 +123,25 @@
     </div>
     <!-- End Section direktori-->
 
-    <!-- Section Form Up Recipe -->
-    <div class="container">
+        <!-- Section Form Up Recipe -->
+        <div class="container">
         <div class="row">
             <div class="col">
                 <div class="imgUpRecipe text-center">
                     <p style="font-size: 30px;"><strong>Nutrient-Rich Menu by You</strong></p>
-                    <img style="width: 10%;" src="/image/picCamera.png" alt="picCamera"> 
+                    <img style="width: 10%;" src="/image/picCamera.png" alt="picCamera">
                     <p>Add Recipe Photo</p>
                 </div>
-                <form style="padding-left: 20%;">
+                <form id="recipeForm" style="padding-left: 20%;">
                     <!-- Title -->
                     <div class="mb-3">
                         <label for="recipeTitle" class="form-label">Title</label>
                         <input type="text" class="form-control" id="recipeTitle" placeholder="Enter recipe title" style="width: 700px;">
+                    </div>
+                    <!-- Picture -->
+                    <div class="mb-3">
+                        <label for="recipePicture" class="form-label">Link of Picture</label>
+                        <input type="text" class="form-control" id="recipePicture" placeholder="Enter img url" style="width: 700px;">
                     </div>
                     <!-- Servings -->
                     <div class="mb-3">
@@ -153,7 +158,7 @@
                         <label for="recipeCalories" class="form-label">Calories</label>
                         <input type="number" class="form-control" id="recipeCalories" placeholder="Enter number of calories" style="width: 700px;">
                     </div>
-                    <!-- Meal -->
+                    <!-- Meal
                     <div class="mb-3">
                         <label class="form-label">Meal</label>
                         <div class="row">
@@ -183,59 +188,136 @@
                             </div>
                         </div>
                     </div>
-                
-                    <!-- Health -->
+                     Health
                     <div class="mb-3">
                         <label class="form-label">Health</label>
                         <div class="row">
                             <div class="col">
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="health" id="Vegan" value="Vegan">
-                                    <label class="form-check-label" for="breakfast">
+                                    <label class="form-check-label" for="Vegan">
                                         Vegan
                                     </label>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="health" id="Gluten Free" value="Gluten Free">
-                                    <label class="form-check-label" for="lunch">
+                                    <input class="form-check-input" type="radio" name="health" id="GlutenFree" value="Gluten Free">
+                                    <label class="form-check-label" for="GlutenFree">
                                         Gluten Free
                                     </label>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="health" id="Low Sugar" value="Low Sugar">
-                                    <label class="form-check-label" for="dinner">
+                                    <input class="form-check-input" type="radio" name="health" id="LowSugar" value="Low Sugar">
+                                    <label class="form-check-label" for="LowSugar">
                                         Low Sugar
                                     </label>
                                 </div>
                             </div>
                         </div>
+                    </div> -->
+
+                    <!-- Meal -->
+                    <div class="mb-3">
+                        <label for="recipemeal" class="form-label">Meal</label>
+                        <input type="text" class="form-control" id="recipemeal" placeholder="Enter Meal" style="width: 700px;">
+                    </div>
+                    <!-- Health -->
+                    <div class="mb-3">
+                        <label for="recipehealth" class="form-label">Health</label>
+                        <input type="text" class="form-control" id="recipehealth" placeholder="Enter Health" style="width: 700px;">
                     </div>
                     <!-- Ingredients -->
                     <div class="mb-3">
-                        <label for="ingredientCount" class="form-label">Number of Ingredients</label>
-                        <input type="number" class="form-control" id="ingredientCount" style="width: 700px;">
-                    </div>
-                    <div class="mb-3">
                         <label class="form-label">Ingredients</label>
-                        <textarea class="form-control" id="ingredients" rows="" placeholder="Enter ingredients" style=" width: 100%; height: auto;max-width: 700px"></textarea>
+                        <textarea class="form-control" id="ingredients" rows="" placeholder="Enter ingredients" style="width: 100%; height: auto; max-width: 700px;"></textarea>
                     </div>
                     <!-- Instruction -->
                     <div class="mb-3">
                         <label for="instruction" class="form-label">Instruction</label>
-                        <textarea class="form-control" id="instruction" rows="" placeholder="Enter instruction" style="width: 100%; height: auto;max-width: 700px"></textarea>
+                        <textarea class="form-control" id="instruction" rows="" placeholder="Enter instruction" style="width: 100%; height: auto; max-width: 700px;"></textarea>
                     </div>
-                
                     <!-- Submit Button -->
-                    <button type="button" class="btn btn-done">Upload</button>
+                    <button type="submit" class="btn btn-done">Upload</button>
                 </form>
             </div>
         </div>
     </div>
     <!-- Section Form Up Recipe -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mendapatkan ID resep dari URL
+            const currentUrl = window.location.pathname;
+
+            // Pisahkan path URL menjadi array
+            const urlParts = currentUrl.split('/');
+
+            // Ambil nilai id dari path URL
+            const recipeId = urlParts[urlParts.length - 1];
+            // Mendapatkan data resep dan mengisi form
+            fetch(`http://127.0.0.1:8000/resep/get-recipe/${recipeId}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('recipeTitle').value = data.name;
+                document.getElementById('recipePicture').value = data.picture;
+                document.getElementById('recipeServings').value = data.servings;
+                document.getElementById('recipePrepTime').value = data.prep_time;
+                document.getElementById('recipeCalories').value = data.calories;
+                document.getElementById('recipemeal').value = data.meal;
+                document.getElementById('recipehealth').value = data.health;
+                document.getElementById('ingredients').value = data.ingredients;
+                document.getElementById('instruction').value = data.detail_resep;
+                
+                
+                // // Set radio button for meal
+                // document.querySelector(`input[name="meal"][value="${data.meal}"]`).checked = true;
+                // // Set radio button for health
+                // document.querySelector(`input[name="health"][value="${data.health}"]`).checked = true;
+            })
+            .catch(error => console.error('Error:', error));
+
+            // Mengirim form dengan metode POST ke endpoint edit
+            document.getElementById('recipeForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const recipeData = {
+                    name: document.getElementById('recipeTitle').value,
+                    picture: document.getElementById('recipePicture').value,
+                    servings: document.getElementById('recipeServings').value,
+                    prep_time: document.getElementById('recipePrepTime').value,
+                    calories: document.getElementById('recipeCalories').value,
+                    meal: document.getElementById('recipehealth').value,
+                    health: document.getElementById('recipehealth').value,
+                    ingredients: document.getElementById('ingredients').value,
+                    detail_resep: document.getElementById('instruction').value
+                };
+
+                fetch(`http://127.0.0.1:8000/api/v1/resep/edit-recipe/${recipeId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                    },
+                    body: JSON.stringify(recipeData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert('Recipe updated successfully!');
+                    window.location.href = `/DetailRecipe/${recipeId}`; // Redirect to home or another page after successful update
+                })
+                .catch(error => console.error('Error:', error));
+            });
+        });
+    </script>
     
     <!-- Section Footer-->
     <footer>

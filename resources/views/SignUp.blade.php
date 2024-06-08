@@ -36,6 +36,7 @@
                     <div class="row">
                         <div class="col">
                             <h1 class="JudulSignUp py-5"><strong>Create your account</strong></h1>
+                            
 
                             <h5>Welcome!</h5><br>
                             <form method="post" action="{{ route('register.submit') }}"> <!-- Tentukan action untuk mengirimkan data ke controller -->
@@ -46,9 +47,9 @@
                                     <input id="email" type="email" class="form-control" name="email" placeholder="Email" />
                                 </div>
                                 <div class="form-group">
-                                    <label for="Name">Name</label>
+                                    <label for="Name">Nama</label>
                                     <!-- Ganti input dengan elemen span -->
-                                    <input id="name" type="name" class="form-control" name="name" placeholder="Name" />
+                                    <input id="name" type="name" class="form-control" name="name" placeholder="Nama" />
                                 </div>
                                 <div class="form-group">
                                     <label for="UserName">User Name</label>
@@ -56,27 +57,27 @@
                                     <input id="username" type="username" class="form-control" name="username" placeholder="User Name" />
                                 </div>
                                 <div class="form-group">
-                                    <label for="Umur">Age</label>
+                                    <label for="Age">Age</label>
                                     <!-- Ganti input dengan elemen span -->
-                                    <input id="umur" type="umur" class="form-control" name="umur" placeholder="Age" />
+                                    <input id="Age" type="Age" class="form-control" name="Age" placeholder="Age" />
                                 </div>
                                 <div class="form-group">
-                                    <label for="jenis_kelamin">Gender</label>
-                                    <select id="jenis_kelamin" class="form-control" name="jenis_kelamin">
+                                    <label for="Gender">Gender</label>
+                                    <select id="Gender" class="form-control" name="Gender">
                                         <option value="" selected disabled>Choose Your Gender</option>
-                                        <option value="Laki-laki">Male</option>
-                                        <option value="Perempuan">Female</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="BeratBadan">Body Weight</label>
+                                    <label for="Body Weight">Body Weight</label>
                                     <!-- Ganti input dengan elemen span -->
-                                    <input id="beratbadan" type="beratbadan" class="form-control" name="berat_badan" placeholder="Body Weight" />
+                                    <input id="BodyWeight" type="BodyWeight" class="form-control" name="BodyWeight" placeholder="Body Weight" />
                                 </div>
                                 <div class="form-group">
-                                    <label for="TinggiBadan">Body Height</label>
+                                    <label for="BodyHeight">Body Height</label>
                                     <!-- Ganti input dengan elemen span -->
-                                    <input id="tinggibadan" type="tinggibadan" class="form-control" name="tinggi_badan" placeholder="Body Height" />
+                                    <input id="BodyHeight" type="BodyHeight" class="form-control" name="BodyHeight" placeholder="BodyHeight" />
                                 </div>
                                 <div class="form-group">
                                     <label for="Password">Password</label>

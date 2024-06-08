@@ -23,20 +23,16 @@ class MyResepController extends Controller
         return response()->json($recipes, 200);
     }
 
-    public function getRecipeByUserAndMyResep(Request $request)
+    public function getRecipeByUserAndMyResep()
     {
-        if ($request->input('Tipe') != 'Bookmark' && $request->input('Tipe') != 'MyResep') {
-            return response()->json(['message' => 'Invalid Tipe.'], 400);
-        }
-
         // Create an instance of AuthController
-        $authController = new AuthController();
+        //$authController = new AuthController();
 
         // Get the authenticated user ID
-        $userId = $authController->getUserId();
+        $userId = 1;  // Hardcoded for now, will be replaced with the actual user ID
 
         // Fetch recipes from MyResep table associated with the specified user
-        $myResepItems = MyResep::where('user_id', $userId)->get();
+        $myResepItems = MyResep::where('id_user', $userId)->get();
 
         // Initialize an array to store filtered recipes
         $recipes = [];
@@ -44,7 +40,40 @@ class MyResepController extends Controller
         // Iterate through each MyResep item
         foreach ($myResepItems as $myResep) {
             // Check if the 'Tipe' column matches the provided value
-            if ($myResep->Tipe === $request->input('Tipe')) {
+            if ($myResep->Tipe === 'MyResep') {
+                // If 'Tipe' matches the provided value, fetch the associated resep and add it to the recipes array
+                $recipes[] = $myResep->resep;
+            }
+        }
+
+        // Check if there are any recipes
+        if (empty($recipes)) {
+            // If there are no recipes, return an empty response with a 404 status code
+            return response()->json(['message' => 'No recipes found for the specified user and Tipe.'], 404);
+        }
+
+        // If there are recipes, return them as a JSON response with a 200 status code
+        return response()->json($recipes, 200);
+    }
+
+    public function getRecipeByUserAndBookmark()
+    {
+        // Create an instance of AuthController
+        //$authController = new AuthController();
+
+        // Get the authenticated user ID
+        $userId = 1;  // Hardcoded for now, will be replaced with the actual user ID
+
+        // Fetch recipes from MyResep table associated with the specified user
+        $myResepItems = MyResep::where('id_user', $userId)->get();
+
+        // Initialize an array to store filtered recipes
+        $recipes = [];
+
+        // Iterate through each MyResep item
+        foreach ($myResepItems as $myResep) {
+            // Check if the 'Tipe' column matches the provided value
+            if ($myResep->Tipe === 'Bookmark') {
                 // If 'Tipe' matches the provided value, fetch the associated resep and add it to the recipes array
                 $recipes[] = $myResep->resep;
             }

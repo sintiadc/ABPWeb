@@ -26,16 +26,16 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="Home">HOME</a>
+                        <a class="nav-link" href="/Home">HOME</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Recipes">RECIPES</a>
+                        <a class="nav-link" href="/Recipes">RECIPES</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="UploadRecipe">CREATE YOUR RECIPE</a>
+                        <a class="nav-link" href="/UploadRecipe">CREATE YOUR RECIPE</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Calories">CALORIES</a>
+                        <a class="nav-link" href="/Calories">CALORIES</a>
                     </li>
                     <!-- Baru Ditambahin -->
                     <li class="nav-item">
@@ -47,10 +47,10 @@
                             </a>
                             <div class="dropdown-content" aria-labelledby="navbarDropdown">
                                 <!-- Isi dropdown menu dengan gambar ikon -->
-                                <a class="dropdown-item" href="Profil">
+                                <a class="dropdown-item" href="/Profil">
                                     <img src="/image/picMyAcc.png" alt="My Account Icon"> My Account
                                 </a>
-                                <a class="dropdown-item" href="MyRecipe">
+                                <a class="dropdown-item" href="/MyRecipe">
                                     <img src="/image/picMyRecipe.png" alt="MyRecipe"> My Recipe
                                 </a>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -119,73 +119,87 @@
     <div class="container">
         <div class="row">
             <div class="col">
-            <a href="/Home">Home</a> / <a href="/Recipes">Recipes</a> / <a href="/DetailRecipe">Detial Recipe</a> 
+            <a href="/Home">Home</a> / <a href="/Recipes">Recipes</a> / <a href="">Detial Recipe</a> 
             </div>
         </div>
     </div>
     <!-- End Section direktori-->
 
     <!-- Section Detail Recipe-->
-    <div class="container">
+    <div class="container" id="recipe-detail-container">
         <div class="row">
             <div class="col-4">
                 <div class="imgRecipe">
-                    <img src="/image/cardRecipes1.png" alt=""> 
+                    <img src="" alt="Recipe Image" id="recipe-image"> 
                 </div>
                 <div class="recipe-details">
-                    <p class="recipe-name">Chicken Salad</p>
-                    <p class="recipe-type">Vegan</p>
-                    <p class="recipe-type">Breakfast</p>
-                    <p class="recipe-serving">3-4 Porsi</p>
-                    <p class="recipe-time">1 hour 30 minute</p>
-                    <p class="recipe-author">Sintia Dwi | 23 April 2024</p>
+                    <p class="recipe-name" id="recipe-name"></p>
+                    <p class="recipe-serving" id="recipe-serving"></p>
+                    <p class="recipe-time" id="recipe-time"></p>
                     <button type="button" class="like btn" id="likeButton" onclick="handleLike()">
                         <i class="fas fa-thumbs-up"></i>
                         <span class="like-count" id="likeCount">0 Likes</span>
                     </button>
-                    
+                    <a href="#" class="bookmark-link" id="bookmarkLink">
+                        <i class="fas fa-bookmark"></i>
+                    </a>
                 </div>
             </div> 
             <div class="col-8">
                 <div class="recipe-info-detail">
-                    <h3><strong class="Ingridients">Ingredients</strong></h3>
-                    <div class="recipe-box">
-                            <li>2 Boneless, skinless chicken breasts</li>
-                            <li>Salt and pepper to taste</li>
-                            <li>1 Tablespoon olive oil</li>
-                            <li>4 Cups mixed salad greens</li>
-                            <li>1 Cup cherry tomatoes, halved</li>
-                            <li>1 Cucumber, sliced</li>
-                            <li>1/4 Cup red onion, thinly sliced</li>
-                            <li>1/2 Cup shredded carrots</li>
-                            <li>1/4 Cup sliced almonds (optional)</li>
-                            <li>1/4 Cup dried cranberries (optional)</li> </br>
-                        <p>For the dressing:</p>
-                            <li>1/4 cup plain Greek yogurt</li>
-                            <li>2 tablespoons mayonnaise</li>
-                            <li>1 tablespoon lemon juice</li>
-                            <li>1 teaspoon Dijon mustard</li>
-                            <li>1 clove garlic, minced</li>
-                            <li>Salt and pepper to taste</li>
-                    </div> </br>
+                    <h3><strong class="Ingredients">Ingredients</strong></h3>
+                    <div class="recipe-box"><p class="recipe-ingredients" id="recipe-ingredients"></p></div><br>
                     <h3><strong>Instructions</strong></h3>
-                    <ol class="instructions-box"> </br>
-                        <li>Season the chicken breasts with salt and pepper on both sides.</li>
-                        <li>Heat olive oil in a skillet over medium-high heat. Add the chicken breasts and cook until golden brown and cooked through, about 6-7 minutes per side. Remove from heat and let cool slightly.</li>
-                        <li>Once cooled, dice the chicken into bite-sized pieces.</li>
-                        <li>In a large bowl, combine the mixed salad greens, cherry tomatoes, cucumber, red onion, shredded carrots, sliced almonds, and dried cranberries (if using).</li>
-                        <li>In a separate small bowl, whisk together the Greek yogurt, mayonnaise, lemon juice, Dijon mustard, minced garlic, salt, and pepper to make the dressing.</li>
-                        <li>Pour the dressing over the salad ingredients and toss until everything is evenly coated.</li>
-                        <li>Add the diced chicken to the salad and gently toss to combine.</li>
-                        <li>Serve immediately, or refrigerate for up to 2 hours before serving for flavors to meld.</li>
-                        <li>Enjoy your delicious Chicken Salad!</li></br>
-                    </ol>
-                </div> </br>
-                <button type="button" class="btn btn-done">Done</button>
+                    <div class="recipe-box"><p class="recipe-instructions" id="recipe-instructions"></p></div><br>
+                    <button type="button" class="btn btn-done">Done</button>
+                </div>
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function() {
+            // Replace with the actual recipe ID you want to fetch
+            // Dapatkan path URL saat ini
+            const currentUrl = window.location.pathname;
+
+            // Pisahkan path URL menjadi array
+            const urlParts = currentUrl.split('/');
+
+            // Ambil nilai id dari path URL
+            const recipeId = urlParts[urlParts.length - 1];
+
+            $.ajax({
+                url: `/resep/get-recipe/${recipeId}`,
+                method: 'GET',
+                success: function(data) {
+                    $('#recipe-image').attr('src', data.picture);
+                    $('#recipe-name').text(data.name);
+                    $('#recipe-serving').text(`Servings: ${data.servings}`);
+                    $('#recipe-time').text(`Prep Time: ${data.prep_time}`);
+                    $('#recipe-author').text(`Author: ${data.author} | ${new Date(data.created_at).toLocaleDateString()}`);
+
+                    $('#recipe-ingredients').html(`${data.ingredients}`);
+                    $('#recipe-instructions').html(`${data.detail_resep}`);
+                    $('#likeCount').text(`${data.like} Likes`);
+                },
+                error: function(error) {
+                    console.log("Error fetching recipe:", error);
+                }
+            });
+
+            $('#bookmarkLink').click(function(e) {
+                e.preventDefault();
+                $(this).toggleClass('active');
+            });
+        });
+
+        function handleLike() {
+            // Handle like functionality here
+        }
+    </script>
+
     <!-- End Section Detail Recipe-->
+
 
     <!--Section Script count like-->
     <script>

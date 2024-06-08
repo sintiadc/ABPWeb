@@ -25,16 +25,16 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="Home">HOME</a>
+                        <a class="nav-link" href="/Home">HOME</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="Recipes">RECIPES</a>
+                        <a class="nav-link" href="/Recipes">RECIPES</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="UploadRecipe">CREATE YOUR RECIPE</a>
+                        <a class="nav-link" href="/UploadRecipe">CREATE YOUR RECIPE</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Calories">CALORIES</a>
+                        <a class="nav-link" href="/Calories">CALORIES</a>
                     </li>
                     <!-- Baru Ditambahin -->
                     <li class="nav-item">
@@ -46,10 +46,10 @@
                             </a>
                             <div class="dropdown-content" aria-labelledby="navbarDropdown">
                                 <!-- Isi dropdown menu dengan gambar ikon -->
-                                <a class="dropdown-item" href="Profil">
+                                <a class="dropdown-item" href="/Profil">
                                     <img src="/image/picMyAcc.png" alt="My Account Icon"> My Account
                                 </a>
-                                <a class="dropdown-item" href="MyRecipe">
+                                <a class="dropdown-item" href="/MyRecipe">
                                     <img src="/image/picMyRecipe.png" alt="My Recipe Icon"> My Recipe
                                 </a>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -162,113 +162,76 @@
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="healthRadio" id="flexRadioDefault2" checked>
                         <label class="form-check-label" for="flexRadioDefault2">
-                            Gluten Free
+                            Gluten_Free
                         </label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="healthRadio" id="flexRadioDefault2" checked>
                         <label class="form-check-label" for="flexRadioDefault2">
-                            Low Sugar
+                            Low_Sugar
                         </label>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-9 Main mt-5 px-5">
-            <div class="card mb-3" >
-                <div class="row g-0">
-                    <div class="col-md-4 image">
-                        <img src="image/cardRecipes1.png" class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title"><strong>Chicken Salad</strong></h5>
-                            <div class="recipe-info">
-                                <div class="col">
-                                    <span>Calories</span></br>
-                                    <span>Ingredients</span></br>
-                                    <span>Servings</span></br>
-                                    <span>Prep Time</span></br>
-                                    <span>Meal</span></br>
-                                    <span>Health</span></br>
-                                </div>
-                                <div class="col">
-                                    <span id="Calories">209</span></br>
-                                    <span id="Ingredients">11</span></br>
-                                    <span id="Servings">6</span></br>
-                                    <span id="Prep Time">25 mins</span></br>
-                                    <span id="Meal">Vegan</span></br>
-                                    <span id="Meal">Breakfast</span></br></br>                                     
-                                </div>
-                            </div>
-                            <button href="/DetailRecipe" id="View" type="" class="view btn ml-auto d-flex justify-content-between">View Details</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="card mb-3" >
-                <div class="row g-0">
-                    <div class="col-md-4 image">
-                        <img src="image/cardRecipes1.png" class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title"><strong>Chicken Salad</strong></h5>
-                            <div class="recipe-info">
-                                <div class="col">
-                                    <span>Calories</span></br>
-                                    <span>Ingredients</span></br>
-                                    <span>Servings</span></br>
-                                    <span>Prep Time</span></br>
-                                    <span>Meal</span></br>
-                                    <span>Health</span></br>
-                                </div>
-                                <div class="col">
-                                    <span id="Calories">209</span></br>
-                                    <span id="Ingredients">11</span></br>
-                                    <span id="Servings">6</span></br>
-                                    <span id="Prep Time">25 mins</span></br>
-                                    <span id="Meal">Vegan</span></br>
-                                    <span id="Meal">Breakfast</span></br></br>                                     
-                                </div>
-                            </div>
-                            <button href="/DetailRecipe" id="View" type="" class="view btn ml-auto d-flex justify-content-between">View Details</button>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-sm-9 Main mt-5 px-5" id="recipe-container">
+                <!-- Recipe cards will be loaded here -->
             </div>
+            <script>
+                $(document).ready(function() {
+                    $.ajax({
+                        url: '{{ route("get-recipe") }}',
+                        method: 'GET',
+                        success: function(data) {
+                            var container = $('#recipe-container');
+                            var content = '';
 
-            <div class="card mb-3" >
-                <div class="row g-0">
-                    <div class="col-md-4 image">
-                        <img src="image/cardRecipes1.png" class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title"><strong>Chicken Salad</strong></h5>
-                            <div class="recipe-info">
-                                <div class="col">
-                                    <span>Calories</span></br>
-                                    <span>Ingredients</span></br>
-                                    <span>Servings</span></br>
-                                    <span>Prep Time</span></br>
-                                    <span>Meal</span></br>
-                                    <span>Health</span></br>
-                                </div>
-                                <div class="col">
-                                    <span id="Calories">209</span></br>
-                                    <span id="Ingredients">11</span></br>
-                                    <span id="Servings">6</span></br>
-                                    <span id="Prep Time">25 mins</span></br>
-                                    <span id="Meal">Vegan</span></br>
-                                    <span id="Meal">Breakfast</span></br></br>                                     
-                                </div>
-                            </div>
-                            <button href="/DetailRecipe" id="View" type="" class="view btn ml-auto d-flex justify-content-between">View Details</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                            data.forEach(function(recipe) {
+                                content += `
+                                    <div class="card mb-3">
+                                        <div class="row g-0">
+                                            <div class="col-md-4 image">
+                                                <img src="${recipe.picture}" class="img-fluid rounded-start" alt="${recipe.title}">
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="card-body">
+                                                    <h5 class="card-title"><strong>${recipe.name}</strong></h5>
+                                                    <div class="recipe-info">
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <span>Calories</span></br>
+                                                                <span>Servings</span></br>
+                                                                <span>Prep_Time</span></br>
+                                                                <span>Meal</span></br>
+                                                                <span>Health</span></br>
+                                                            </div>
+                                                            <div class="col">
+                                                                <span id="Calories">${recipe.calories}</span></br>
+                                                                <span id="Servings">${recipe.servings}</span></br>
+                                                                <span id="PrepTime">${recipe.prep_time}</span></br>
+                                                                <span id="Meal">${recipe.meal}</span></br>
+                                                                <span id="Health">${recipe.health}</span></br>                                     
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <a href="/DetailRecipe/${recipe.id}" id="View" class="view btn ml-auto d-flex justify-content-between">View Details</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                `;
+                            });
+
+                            container.html(content);
+                        },
+                        error: function(error) {
+                            console.log("Error fetching recipes:", error);
+                        }
+                    });
+                });
+            </script>
+
+
             
             </div>
         </div>
@@ -338,14 +301,7 @@
     </footer>
     <!-- End Section Footer-->
 
-    
 
-    <script>
-        document.getElementById('View').addEventListener('click', function() {
-            // Arahkan pengguna ke halaman DetailRecipe
-            window.location.href = "/DetailRecipe";
-        });
-    </script>
 
     <script>
         function logoutAndRedirect() {

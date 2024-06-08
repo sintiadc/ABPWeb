@@ -132,26 +132,32 @@
                     <img style="width: 10%;" src="/image/picCamera.png" alt="picCamera"> 
                     <p>Add Recipe Photo</p>
                 </div>
-                <form style="padding-left: 20%;">
+                <form id="recipeForm" style="padding-left: 20%;">
+                    @csrf
                     <!-- Title -->
                     <div class="mb-3">
                         <label for="recipeTitle" class="form-label">Title</label>
-                        <input type="text" class="form-control" id="recipeTitle" placeholder="Enter recipe title" style="width: 700px;">
+                        <input type="text" class="form-control" id="recipeTitle" name="name" placeholder="Enter recipe title" style="width: 700px;" required>
+                    </div>
+                    <!-- Picture -->
+                    <div class="mb-3">
+                        <label for="recipePicture" class="form-label">Picture</label>
+                        <input type="text" class="form-control" id="recipePicture" name="picture" placeholder="Enter URL of the picture" style="width: 700px;" required>
                     </div>
                     <!-- Servings -->
                     <div class="mb-3">
                         <label for="recipeServings" class="form-label">Servings</label>
-                        <input type="number" class="form-control" id="recipeServings" placeholder="Enter number of servings" style="width: 700px;">
+                        <input type="number" class="form-control" id="recipeServings" name="servings" placeholder="Enter number of servings" style="width: 700px;" required>
                     </div>
                     <!-- Prep Time -->
                     <div class="mb-3">
                         <label for="recipePrepTime" class="form-label">Prep Time</label>
-                        <input type="text" class="form-control" id="recipePrepTime" placeholder="Enter preparation time" style="width: 700px;">
+                        <input type="text" class="form-control" id="recipePrepTime" name="prep_time" placeholder="Enter preparation time" style="width: 700px;" required>
                     </div>
                     <!-- Calories -->
                     <div class="mb-3">
                         <label for="recipeCalories" class="form-label">Calories</label>
-                        <input type="number" class="form-control" id="recipeCalories" placeholder="Enter number of calories" style="width: 700px;">
+                        <input type="number" class="form-control" id="recipeCalories" name="calories" placeholder="Enter number of calories" style="width: 700px;" required>
                     </div>
                     <!-- Meal -->
                     <div class="mb-3">
@@ -159,7 +165,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="meal" id="breakfast" value="breakfast">
+                                    <input class="form-check-input" type="radio" name="meal" id="breakfast" value="Breakfast" required>
                                     <label class="form-check-label" for="breakfast">
                                         Breakfast
                                     </label>
@@ -167,7 +173,7 @@
                             </div>
                             <div class="col">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="meal" id="lunch" value="lunch">
+                                    <input class="form-check-input" type="radio" name="meal" id="lunch" value="Lunch" required>
                                     <label class="form-check-label" for="lunch">
                                         Lunch
                                     </label>
@@ -175,7 +181,7 @@
                             </div>
                             <div class="col">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="meal" id="dinner" value="dinner">
+                                    <input class="form-check-input" type="radio" name="meal" id="dinner" value="Dinner" required>
                                     <label class="form-check-label" for="dinner">
                                         Dinner
                                     </label>
@@ -183,32 +189,31 @@
                             </div>
                         </div>
                     </div>
-                
                     <!-- Health -->
                     <div class="mb-3">
                         <label class="form-label">Health</label>
                         <div class="row">
                             <div class="col">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="health" id="Vegan" value="Vegan">
-                                    <label class="form-check-label" for="breakfast">
+                                    <input class="form-check-input" type="radio" name="health" id="vegan" value="Vegan" required>
+                                    <label class="form-check-label" for="vegan">
                                         Vegan
                                     </label>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="health" id="Gluten Free" value="Gluten Free">
-                                    <label class="form-check-label" for="lunch">
-                                        Gluten Free
+                                    <input class="form-check-input" type="radio" name="health" id="gluten_free" value="Gluten_Free" required>
+                                    <label class="form-check-label" for="gluten_free">
+                                        Gluten_Free
                                     </label>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="health" id="Low Sugar" value="Low Sugar">
-                                    <label class="form-check-label" for="dinner">
-                                        Low Sugar
+                                    <input class="form-check-input" type="radio" name="health" id="low_sugar" value="Low_Sugar" required>
+                                    <label class="form-check-label" for="low_sugar">
+                                        Low_Sugar
                                     </label>
                                 </div>
                             </div>
@@ -216,26 +221,72 @@
                     </div>
                     <!-- Ingredients -->
                     <div class="mb-3">
-                        <label for="ingredientCount" class="form-label">Number of Ingredients</label>
-                        <input type="number" class="form-control" id="ingredientCount" style="width: 700px;">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Ingredients</label>
-                        <textarea class="form-control" id="ingredients" rows="" placeholder="Enter ingredients" style=" width: 100%; height: auto;max-width: 700px"></textarea>
+                        <label for="ingredients" class="form-label">Ingredients</label>
+                        <textarea class="form-control" id="ingredients" name="ingredients" rows="" placeholder="Enter ingredients" style="width: 100%; height: auto;max-width: 700px" required></textarea>
                     </div>
                     <!-- Instruction -->
                     <div class="mb-3">
                         <label for="instruction" class="form-label">Instruction</label>
-                        <textarea class="form-control" id="instruction" rows="" placeholder="Enter instruction" style="width: 100%; height: auto;max-width: 700px"></textarea>
+                        <textarea class="form-control" id="instruction" name="detail_resep" rows="" placeholder="Enter instruction" style="width: 100%; height: auto;max-width: 700px" required></textarea>
                     </div>
-                
                     <!-- Submit Button -->
-                    <button type="button" class="btn btn-done">Upload</button>
+                    <button type="button" class="btn btn-done" id="uploadRecipeBtn">Upload</button>
                 </form>
             </div>
         </div>
     </div>
-    <!-- Section Form Up Recipe -->
+
+    <!-- Pop-up Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="successModalLabel">Success</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Recipe has been uploaded successfully!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('#uploadRecipeBtn').click(function() {
+            var formData = {
+                '_token': $('input[name=_token]').val(),
+                'name': $('#recipeTitle').val(),
+                'picture': $('#recipePicture').val(),
+                'servings': $('#recipeServings').val(),
+                'prep_time': $('#recipePrepTime').val(),
+                'calories': $('#recipeCalories').val(),
+                'meal': $('input[name="meal"]:checked').val(),
+                'health': $('input[name="health"]:checked').val(),
+                'ingredients': $('#ingredients').val(),
+                'detail_resep': $('#instruction').val(),
+                'like': 0
+            };
+
+            $.ajax({
+                url: '/api/v1/resep/create-recipe',
+                method: 'POST',
+                data: formData,
+                success: function(response) {
+                    $('#successModal').modal('show');
+                },
+                error: function(response) {
+                    alert('Error: ' + response.responseJSON.message);
+                }
+            });
+        });
+    });
+    </script>
+
     
     <!-- Section Footer-->
     <footer>

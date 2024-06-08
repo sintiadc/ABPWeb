@@ -25,8 +25,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/Home', function () {
         return view('Home');
     });
-    Route::get('/resep/create-recipe', [RecipeController::class, 'createRecipe']);
+    #Route::post('/resep/create-recipe', [RecipeController::class, 'createRecipe']);
     Route::get('/resep/get-recipe', [RecipeController::class, 'getRecipe'])->name('get-recipe');
+    Route::get('/resep/get-recipe/{id}', [RecipeController::class, 'getRecipeById'])->name('get-recipe-by-id');
+    
     Route::get('/resep/update-recipe/{id}', [RecipeController::class, 'updateRecipe']);
     Route::get('/resep/tambah-like/{id}', [RecipeController::class, 'tambahLike']);
     Route::get('/resep/delete-recipe/{id}', [RecipeController::class, 'deleteRecipe']);
@@ -35,6 +37,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/user/create-user', [UserController::class, 'createUser']);
     Route::get('/user/get-user', [UserController::class, 'getUser'])->name('get-user');
+    Route::get('/users/{id}', [UserController::class, 'getUserById']);
     Route::get('/user/update-user/', [UserController::class, 'updateUser']);
     Route::get('/user/delete-user/', [UserController::class, 'deleteUser']);
 
@@ -42,6 +45,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/myresep/create-recipe', [MyResepController::class, 'createMyResep']);
     Route::get('/myresep/delete-recipe/{id}', [MyResepController::class, 'deleteRecipe']);
     Route::get('/myresep/getByUserAndMyResep', [MyResepController::class, 'getRecipeByUserAndMyResep']);
+    Route::get('/myresep/getRecipeByUserAndBookmark', [MyResepController::class, 'getRecipeByUserAndBookmark']);
     Route::get('/myresep/addBookmark/{id}', [MyResepController::class, 'addBookmark']);
 
     Route::get('/BMR', [UserController::class, 'BMR']);
@@ -80,12 +84,20 @@ Route::middleware(['auth'])->group(function () {
         return view('MyRecipe');
     });
 
+    Route::get('/Bookmark', function () {
+        return view('Bookmark');
+    });
+
     Route::get('/UploadRecipe', function () {
         return view('UploadRecipe');
     });
 
-    Route::get('/DetailRecipe', function () {
+    Route::get('/DetailRecipe/{id}', function () {
         return view('DetailRecipe');
+    });
+
+    Route::get('/EditRecipe/{id}', function () {
+        return view('EditRecipe');
     });
 
     Route::get('/logout', function () {

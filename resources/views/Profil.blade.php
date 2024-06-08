@@ -30,16 +30,16 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="Home">HOME</a>
+                    <a class="nav-link" href="/Home">HOME</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Recipes">RECIPES</a>
+                    <a class="nav-link" href="/Recipes">RECIPES</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="UploadRecipe">CREATE YOUR RECIPE</a>
+                    <a class="nav-link" href="/UploadRecipe">CREATE YOUR RECIPE</a>
                 </li>
                 <li class="nav-item">
-                        <a class="nav-link" href="Calories">CALORIES</a>
+                        <a class="nav-link" href="/Calories">CALORIES</a>
                     </li>
                 <!-- Baru Ditambahin -->
                 <li class="nav-item active">
@@ -51,10 +51,10 @@
                         </a>
                         <div class="dropdown-content" aria-labelledby="navbarDropdown">
                             <!-- Isi dropdown menu dengan gambar ikon -->
-                            <a class="dropdown-item" href="My Account">
+                            <a class="dropdown-item" href="/My Account">
                                 <img src="/image/picMyAcc.png" alt="My Account Icon"> My Account
                             </a>
-                            <a class="dropdown-item" href="MyRecipe">
+                            <a class="dropdown-item" href="/MyRecipe">
                                 <img src="/image/picMyRecipe.png" alt="MyRecipe"> My Recipe
                             </a>
                             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -134,15 +134,18 @@
             </div>
             <div class="col-3">
                 <div class="profile-details">
-                    <a class="active" href="Profil">
+                    <a class="active" href="/Profil">
                         <img src="/image/profile.png" alt="profile" width="30" height="30">
                         General</a>
-                    <a href="EditProfile">
+                    <a href="/EditProfile">
                         <img src="/image/seting.png" alt="profile" width="30" height="30">
                         Edit Profile</a>
-                    <a href="MyRecipe">
+                    <a href="/MyRecipe">
                         <img src="/image/recipe-book.png" alt="profile" width="30" height="30">
                         My Recipe</a>
+                    <a href="/Bookmark">
+                        <img src="/image/bookmark.png" alt="profile" width="30" height="30">
+                        Bookmark</a>
                 </div>
             </div>
             <div class="col-md-6" style="padding-left: 2%; display: flexbox;">
@@ -153,43 +156,43 @@
                     <div class="input">
                         <label for="email" class="form-label">Email</label>
                         <div class="input-with-icon">
-                            <span id="email" class="form-control input-custom">email@example.com</span>
+                            <span id="email" class="form-control input-custom">{{ Auth::user()->email }}</span>
                         </div>
                     </div> <br>
                     <div class="input">
                         <label for="full name" class="form-label">Name</label>
                         <div class="input-with-icon">
-                            <span id="name" class="form-control input-custom">John Doe</span>
+                            <span id="name" class="form-control input-custom">{{ Auth::user()->name }}</span>
                         </div>
                     </div> <br>
                     <div class="input">
                         <label for="username" class="form-label">Username</label>
                         <div class="input-with-icon">
-                            <span id="username" class="form-control input-custom">johndoe123</span>
+                            <span id="username" class="form-control input-custom">{{ Auth::user()->username }}</span>
                         </div>
                     </div> <br>
                     <div class="input">
                         <label for="Age" class="form-label">Age</label>
                         <div class="input-with-icon">
-                            <span id="Age" class="form-control input-custom">30</span>
+                            <span id="Age" class="form-control input-custom">{{ Auth::user()->umur }}</span>
                         </div>
                     </div> <br>
                     <div class="input">
-                        <label for="Gender" class="form-label">Gender</label>
+                        <label for="Gender" class="form-label">Jenis Kelamin</label>
                         <div class="input-with-icon">
-                            <span id="Gender" class="form-control input-custom">Laki-laki</span>
+                            <span id="Gender" class="form-control input-custom">{{ Auth::user()->jenis_kelamin }}</span>
                         </div>
                     </div> <br>
                     <div class="input">
                         <label for="BodyWeight" class="form-label">Body Weight</label>
                         <div class="input-with-icon">
-                            <span id="BodyWeight" class="form-control input-custom">70 kg</span>
+                            <span id="BodyWeight" class="form-control input-custom">{{ Auth::user()->berat_badan }}</span>
                         </div>
                     </div> <br>
                     <div class="input">
                         <label for="Body Height" class="form-label">Body Height</label>
                         <div class="input-with-icon">
-                            <span id="BodyHeight" class="form-control input-custom">180 cm</span>
+                            <span id="BodyHeight" class="form-control input-custom">{{ Auth::user()->tinggi_badan }}</span>
                         </div>
                     </div> <br>
                 </div>

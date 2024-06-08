@@ -25,16 +25,16 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link " href="Home">HOME</a>
+                        <a class="nav-link " href="/Home">HOME</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Recipes">RECIPES</a>
+                        <a class="nav-link" href="/Recipes">RECIPES</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="UploadRecipe">CREATE YOUR RECIPE</a>
+                        <a class="nav-link" href="/UploadRecipe">CREATE YOUR RECIPE</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="Calories">CALORIES</a>
+                        <a class="nav-link active" href="/Calories">CALORIES</a>
                     </li>
                     <!-- Baru Ditambahin -->
                     <li class="nav-item">
@@ -46,10 +46,10 @@
                             </a>
                             <div class="dropdown-content" aria-labelledby="navbarDropdown">
                                 <!-- Isi dropdown menu dengan gambar ikon -->
-                                <a class="dropdown-item" href="Profil">
+                                <a class="dropdown-item" href="/Profil">
                                     <img src="/image/picMyAcc.png" alt="My Account Icon"> My Account
                                 </a>
-                                <a class="dropdown-item" href="MyRecipe">
+                                <a class="dropdown-item" href="/MyRecipe">
                                     <img src="/image/picMyRecipe.png" alt="My Recipe Icon"> My Recipe
                                 </a>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -123,27 +123,30 @@
     <!-- End Section direktori-->
 
         <!-- Section Form Up Recipe -->
-    <div class="container">
+        <div class="container">
         <div class="row">
             <div class="col">
                 <div class="imgUpRecipe text-center">
                     <p style="font-size: 30px;"><strong>Calorie Calculator</strong></p>
-                    <img style="width: 10%;" src="/image/calories.png" alt="picCamera"> 
-                    <p style="margin: 0;">Calculate your current daily calorie needs accurately efficiently</p>
+                    <img style="width: 10%;" src="/image/calories.png" alt="calories"> 
+                    <p style="margin: 0;">Calculate your current daily calorie needs accurately and efficiently</p>
                     <p style="margin: 0;">to help you achieve your health goals effectively.</p>
                 </div>
-                <form style="padding-left: 20%; padding-top: 2%;">
+                <form id="bmrForm" style="padding-left: 20%; padding-top: 2%;">
+                    <!-- Add CSRF Token -->
+                    <input type="hidden" name="_token" id="csrf-token" value="{{ csrf_token() }}" />
+
                     <!-- Gender -->
                     <div class="mb-3">
                         <label class="form-label">Gender</label>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gender" id="male" value="male">
+                            <input class="form-check-input" type="radio" name="gender" id="male" value="Laki-laki">
                             <label class="form-check-label" for="male">
                                 Male
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+                            <input class="form-check-input" type="radio" name="gender" id="female" value="Perempuan">
                             <label class="form-check-label" for="female">
                                 Female
                             </label>
@@ -153,34 +156,58 @@
                     <!-- Body Weight -->
                     <div class="mb-3">
                         <label for="bodyweight" class="form-label">Body weight</label>
-                        <input type="number" class="form-control" id="bodyweight" placeholder="Enter bodyweight" style="width: 700px;">
+                        <input type="number" class="form-control" id="bodyweight" name="berat_badan" placeholder="Enter bodyweight" style="width: 700px;">
                     </div>
                     <!-- Height -->
                     <div class="mb-3">
                         <label for="Height" class="form-label">Height</label>
-                        <input type="number" class="form-control" id="Height" placeholder="Enter Height" style="width: 700px;">
+                        <input type="number" class="form-control" id="Height" name="tinggi_badan" placeholder="Enter Height" style="width: 700px;">
                     </div>
                     <!-- Age -->
                     <div class="mb-3">
                         <label for="Age" class="form-label">Age</label>
-                        <input type="number" class="form-control" id="Age" placeholder="Enter Age" style="width: 700px;">
+                        <input type="number" class="form-control" id="Age" name="umur" placeholder="Enter Age" style="width: 700px;">
                     </div>
 
                     <!-- Submit Button -->
-                    <button type="button" class="btn btn-done">Calculate Now</button>
+                    <button type="button" class="btn btn-done" id="calculateBtn">Calculate Now</button>
 
                     <!-- Result -->
                     <div style="padding-top: 1%;" class="mb-3">
-                        <label for="instruction" class="form-label">Result</label>
-                        <textarea class="form-control" id="instruction" rows="" placeholder="Your Result" style="overflow-y: auto; width: 700px;"></textarea>
+                        <label for="result" class="form-label">Result</label>
+                        <textarea class="form-control" id="result" rows="" placeholder="Your Result" style="overflow-y: auto; width: 700px;"></textarea>
                     </div>
-                
-                    
                 </form>
             </div>
         </div>
     </div>
-    <!-- Section Form Up Recipe -->
+
+    <script>
+        $(document).ready(function() {
+            $('#calculateBtn').click(function() {
+                var formData = {
+                    '_token': $('#csrf-token').val(),
+                    'umur': $('#Age').val(),
+                    'jenis_kelamin': $('input[name="gender"]:checked').val(),
+                    'berat_badan': $('#bodyweight').val(),
+                    'tinggi_badan': $('#Height').val()
+                };
+
+                $.ajax({
+                    url: '/api/v1/hitung-bmr',
+                    method: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        $('#result').val('Your BMR is: ' + response.bmr.toString());
+                    },
+                    error: function(xhr, status, error) {
+                        alert('Error: ' + xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+        <!-- Section Form Up Recipe -->
 
     <!-- Section Footer-->
     <footer>

@@ -14,6 +14,7 @@
 
     <!-- Tautan ke Bootstrap JavaScript -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
     <link rel="stylesheet" href="/css/Home.css">
     
 
@@ -28,16 +29,16 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="Home">HOME</a>
+                        <a class="nav-link active" href="/Home">HOME</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Recipes">RECIPES</a>
+                        <a class="nav-link" href="/Recipes">RECIPES</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="UploadRecipe">CREATE YOUR RECIPE</a>
+                        <a class="nav-link" href="/UploadRecipe">CREATE YOUR RECIPE</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Calories">CALORIES</a>
+                        <a class="nav-link" href="/Calories">CALORIES</a>
                     </li>
                     <!-- Baru Ditambahin -->
                     <li class="nav-item">
@@ -49,10 +50,10 @@
                             </a>
                             <div class="dropdown-content" aria-labelledby="navbarDropdown">
                                 <!-- Isi dropdown menu dengan gambar ikon -->
-                                <a class="dropdown-item" href="Profil">
+                                <a class="dropdown-item" href="/Profil">
                                     <img src="/image/picMyAcc.png" alt="My Account Icon"> My Account
                                 </a>
-                                <a class="dropdown-item" href="MyRecipe">
+                                <a class="dropdown-item" href="/MyRecipe">
                                     <img src="/image/picMyRecipe.png" alt="My Recipe Icon"> My Recipe
                                 </a>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -165,7 +166,7 @@
     <div class="container">
         <div class="row">
             <div class="col text-center mt-5">
-                <h2><strong>Popular Food</strong></h2><br>
+                <h2><strong>Culinary Creations</strong></h2><br>
                 <p>We provide various food recipes with high taste with ratings to see popular food recipes. To see food recipes, go to the "Recipes" menu.</p>
 
                 <div class="contentOS container">
@@ -240,6 +241,7 @@
         </div>
     </div>
     <!--End Section Popular Food-->
+
 
     <!-- Section Footer-->
     <footer>

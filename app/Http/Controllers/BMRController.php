@@ -10,29 +10,22 @@ use App\Http\Controllers\AuthController;
 
 class BMRController extends Controller
 {
-    public function HitungBMR()
+    public function HitungBMR(Request $request)
     {
-        // Create an instance of AuthController
-        $authController = new AuthController();
-
-        // Get the authenticated user ID
-        $userId = $authController->getUserId();
-
-        // Check if the user exists
-        $user = User::find($userId);
-
-        // Check if the user exists
-        if (!$user) {
-            // If the user does not exist, return a 404 Not Found response
-            return response()->json(['message' => 'User not found.'], 404);
-        }
+        // Validate the incoming request data
+        $request->validate([
+            'umur' => 'required|numeric',
+            'jenis_kelamin' => 'required|string',
+            'berat_badan' => 'required|numeric',
+            'tinggi_badan' => 'required|numeric',
+        ]);
 
         // Calculate the user's BMR
         $bmr = 0;
-        if ($user->jenis_kelamin == 'Laki-laki') {
-            $bmr = 66 + (13.7 * $user->berat_badan) + (5 * $user->tinggi_badan) - (6.8 * $user->umur);
-        } else if ($user->jenis_kelamin == 'Perempuan') {
-            $bmr = 665 + (9.6 * $user->berat_badan) + (1.8 * $user->tinggi_badan) - (4.7 * $user->umur);
+        if ($request->jenis_kelamin == 'Laki-laki') {
+            $bmr = 66 + (13.7 * $request->berat_badan) + (5 * $request->tinggi_badan) - (6.8 * $request->umur);
+        } else if ($request->jenis_kelamin == 'Perempuan') {
+            $bmr = 665 + (9.6 * $request->berat_badan) + (1.8 * $request->tinggi_badan) - (4.7 * $request->umur);
         }
         return response()->json(['bmr' => $bmr], 200);
     }

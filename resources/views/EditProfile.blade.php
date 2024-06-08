@@ -30,16 +30,16 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="Home">HOME</a>
+                    <a class="nav-link" href="/Home">HOME</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Recipes">RECIPES</a>
+                    <a class="nav-link" href="/Recipes">RECIPES</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="UploadRecipe">CREATE YOUR RECIPE</a>
+                    <a class="nav-link" href="/UploadRecipe">CREATE YOUR RECIPE</a>
                 </li>
                 <li class="nav-item">
-                        <a class="nav-link" href="Calories">CALORIES</a>
+                        <a class="nav-link" href="/Calories">CALORIES</a>
                     </li>
                 <!-- Baru Ditambahin -->
                 <li class="nav-item">
@@ -51,10 +51,10 @@
                         </a>
                         <div class="dropdown-content" aria-labelledby="navbarDropdown">
                             <!-- Isi dropdown menu dengan gambar ikon -->
-                            <a class="dropdown-item" href="Profil">
+                            <a class="dropdown-item" href="/Profil">
                                 <img src="/image/picMyAcc.png" alt="My Account Icon"> My Account
                             </a>
-                            <a class="dropdown-item" href="MyRecipe">
+                            <a class="dropdown-item" href="/MyRecipe">
                                 <img src="/image/picMyRecipe.png" alt="MyRecipe"> My Recipe
                             </a>
                             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -126,85 +126,121 @@
     </div>
     <!-- End Section direktori-->
 
-    <!-- Section Edit Profile-->
-    <div class="container">
-        <div class="row">
-            <div class="col-12" style="padding-bottom: 3%; font-size: 25px;">
-                <strong>Personal Data</strong>
+<!-- Section Edit Profile-->
+<div class="container">
+    <div class="row">
+        <div class="col-12" style="padding-bottom: 3%; font-size: 25px;">
+            <strong>Personal Data</strong>
+        </div>
+        <div class="col-3">
+            <div class="profile-details">
+                <a href="/Profil">
+                    <img src="/image/profile.png" alt="profile" width="30" height="30">
+                    General</a>
+                <a class="active" href="/EditProfile">
+                    <img src="/image/seting.png" alt="profile" width="30" height="30">
+                    Edit Profile</a>
+                <a href="/MyRecipe">
+                    <img src="/image/recipe-book.png" alt="profile" width="30" height="30">
+                    My Recipe</a>
+                <a href="/Bookmark">
+                        <img src="/image/bookmark.png" alt="profile" width="30" height="30">
+                Bookmark</a>
             </div>
-            <div class="col-3">
-                <div class="profile-details">
-                    <a href="Profil">
-                        <img src="/image/profile.png" alt="profile" width="30" height="30">
-                        General</a>
-                    <a class="active" href="EditProfile">
-                        <img src="/image/seting.png" alt="profile" width="30" height="30">
-                        Edit Profile</a>
-                    <a href="MyRecipe">
-                        <img src="/image/recipe-book.png" alt="profile" width="30" height="30">
-                        My Recipe</a>
-                </div>
-            </div>
-            <div class="col-6">
-                <div class="col"><img src="/image/profile2.png" alt="profile" width="80" height="80">
-                </div> <br>
-                <div class="col">
+        </div>
+        <div class="col-6">
+            <div class="col"><img src="/image/profile2.png" alt="profile" width="80" height="80">
+            </div> <br>
+            <div class="col">
+                <form action="/api/v1/user/edit" method="POST">
+                    @csrf
+                    <input type="hidden" name="id" value="{{ Auth::user()->username }}">
                     <div class="input">
                         <label for="email" class="form-label">Email</label>
                         <div class="input-with-icon">
-                            <input type="text" id="email" class="form-control input-custom" placeholder="Email" aria-label="Email">
+                            <input type="text" id="email" name="email" class="form-control input-custom" placeholder="Email" aria-label="Email" value="{{ Auth::user()->email }}">
                             <span class="input-icon"><img src="/image/edit.png" alt="edit" width="20" height="20"></span>
                         </div>
                     </div> <br>
                     <div class="input">
                         <label for="name" class="form-label">Name</label>
                         <div class="input-with-icon">
-                            <input type="text" id="name" class="form-control input-custom" placeholder="Name" aria-label="Name">
+                            <input type="text" id="name" name="name" class="form-control input-custom" placeholder="Name" aria-label="Name" value="{{ Auth::user()->name }}">
                             <span class="input-icon"><img src="/image/edit.png" alt="edit" width="20" height="20"></span>
                         </div>
                     </div> <br>
                     <div class="input">
                         <label for="username" class="form-label">Username</label>
                         <div class="input-with-icon">
-                            <input type="text" id="username" class="form-control input-custom" placeholder="Username" aria-label="Username">
+                            <input type="text" id="username" name="username" class="form-control input-custom" placeholder="Username" aria-label="Username" value="{{ Auth::user()->username }}">
                             <span class="input-icon"><img src="/image/edit.png" alt="edit" width="20" height="20"></span>
                         </div>
                     </div> <br>
                     <div class="input">
                         <label for="umur" class="form-label">Umur</label>
                         <div class="input-with-icon">
-                            <input type="text" id="umur" class="form-control input-custom" placeholder="umur" aria-label="Umur">
+                            <input type="text" id="umur" name="umur" class="form-control input-custom" placeholder="umur" aria-label="Umur" value="{{ Auth::user()->umur }}">
                             <span class="input-icon"><img src="/image/edit.png" alt="edit" width="20" height="20"></span>
                         </div>
                     </div> <br>
                     <div class="input">
                         <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
                         <div class="input-with-icon">
-                            <input type="text" id="jenis_kelamin" class="form-control input-custom" placeholder="Jenis Kelamin" aria-label="Jenis Kelamin">
+                            <input type="text" id="jenis_kelamin" name="jenis_kelamin" class="form-control input-custom" placeholder="Jenis Kelamin" aria-label="Jenis Kelamin" value="{{ Auth::user()->jenis_kelamin }}">
                             <span class="input-icon"><img src="/image/edit.png" alt="edit" width="20" height="20"></span>
                         </div>
                     </div> <br>
                     <div class="input">
                         <label for="berat_badan" class="form-label">Berat Badan</label>
                         <div class="input-with-icon">
-                            <input type="text" id="berat_badan" class="form-control input-custom" placeholder="Berat Badan" aria-label="Berat Badan">
+                            <input type="text" id="berat_badan" name="berat_badan" class="form-control input-custom" placeholder="Berat Badan" aria-label="Berat Badan" value="{{ Auth::user()->berat_badan }}">
                             <span class="input-icon"><img src="/image/edit.png" alt="edit" width="20" height="20"></span>
                         </div>
                     </div> <br>
                     <div class="input">
                         <label for="tinggi_badan" class="form-label">Tinggi Badan</label>
                         <div class="input-with-icon">
-                            <input type="text" id="tinggi_badan" class="form-control input-custom" placeholder="Tinggi Badan" aria-label="Tinggi Badan">
+                            <input type="text" id="tinggi_badan" name="tinggi_badan" class="form-control input-custom" placeholder="Tinggi Badan" aria-label="Tinggi Badan" value="{{ Auth::user()->tinggi_badan }}">
                             <span class="input-icon"><img src="/image/edit.png" alt="edit" width="20" height="20"></span>
                         </div>
                     </div> <br>
 
-                    <button type="button" class="btn btn-save float-right">Save</button>
-                </div>
+                    <button type="submit" class="btn btn-save float-right" onclick="showSuccessPopup()">Save</button>
+
+                </form>
             </div>
         </div>
     </div>
-    <!-- Section Edit Profile-->
+</div>
+<!-- Section Edit Profile-->
+<!-- Section Script untuk pop-up -->
+<script>
+    function showSuccessPopup() {
+        $('#successModal').modal('show'); // Tampilkan modal
+    }
+</script>
+<!-- End Section Script untuk pop-up -->
+<!-- Modal Success -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="successModalLabel">Success!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Profile updated successfully.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Modal Success -->
+
 
     <!-- Section Footer-->
     <footer>
