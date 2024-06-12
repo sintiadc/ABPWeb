@@ -28,6 +28,7 @@ Route::group(['middleware' => 'api','prefix' => 'v1'], function ($router) {
     Route::post('/hitung-bmr', [BMRController::class, 'HitungBMR']);
     Route::post('/user/edit', [UserController::class, 'updateUser']);    
     Route::post('/resep/edit-recipe/{id}', [RecipeController::class, 'updateRecipe']);
+    Route::post('/myresep/addBookmark/', [MyResepController::class, 'addBookmark']);
 });
     
 

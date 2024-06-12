@@ -91,32 +91,28 @@ class MyResepController extends Controller
 
     public function addBookmark(Request $request)
     {
-        // Validate the incoming request data
-        $validatedData = $request->validate([
-            'user_id' => 'required|exists:users,id',
-            'resep_id' => 'required|exists:reseps,id',
-        ]);
 
         // Check if the recipe is already bookmarked by the user
-        $existingBookmark = MyResep::where('user_id', $validatedData['user_id'])
-            ->where('resep_id', $validatedData['resep_id'])
+        $existingBookmark = MyResep::where('id_user', $request->user_id)
+            ->where('id_resep', $request->resep_id)
             ->where('Tipe', 'Bookmark')
             ->first();
 
         if ($existingBookmark) {
             // If the recipe is already bookmarked, return a 409 Conflict response
-            return response()->json(['message' => 'Recipe already bookmarked.'], 409);
+            $existingBookmark->delete();
+            return response()->json(['message' => 'Bookmark dihapus.'], 200);
         }
 
         // Create a new bookmark
         $bookmark = MyResep::create([
-            'user_id' => $validatedData['user_id'],
-            'resep_id' => $validatedData['resep_id'],
+            'id_user' => $request->user_id,
+            'id_resep' => $request->resep_id,
             'Tipe' => 'Bookmark',
         ]);
 
         // Return the created bookmark as JSON with a 201 status code
-        return response()->json($bookmark, 201);
+        return response()->json(['message' => 'Bookmark ditambahkan.'], 200);
     }
 
 

@@ -84,7 +84,7 @@ class UserController extends Controller
         $user->save();
 
         // Return the updated user as JSON with a 200 status code
-        return response()->json($user, 200);
+        return response()->json(200);
     }
 
     public function deleteUser()

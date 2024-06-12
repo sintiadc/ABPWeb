@@ -46,7 +46,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/myresep/delete-recipe/{id}', [MyResepController::class, 'deleteRecipe']);
     Route::get('/myresep/getByUserAndMyResep', [MyResepController::class, 'getRecipeByUserAndMyResep']);
     Route::get('/myresep/getRecipeByUserAndBookmark', [MyResepController::class, 'getRecipeByUserAndBookmark']);
-    Route::get('/myresep/addBookmark/{id}', [MyResepController::class, 'addBookmark']);
+    
 
     Route::get('/BMR', [UserController::class, 'BMR']);
     

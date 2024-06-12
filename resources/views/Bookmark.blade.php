@@ -149,24 +149,11 @@
         </div>
         <div class="col-9" id="recipe-container">
             <div class="row">
-                <div class="col-12 col-md-4">
-                    <div class="card-abc h-85">
-                        <div class="card-img-container">
-                            <img src="/image/ChimichurriSreak.jpeg" class="card-img-top img-fluid" alt="Chimichurri">
-                        </div>
-                        <div class="card-body text-center">
-                            <h5 class="card-title"><strong>Chimichurri Sreak</strong></h5>
-                            <div class="button-container">
-                            <button class="btn btn1" type="button" data-toggle="modal" data-target="#deleteModal">Delete</button>
-                                <button class="btn btn2" type="button" onclick="window.location.href='/DetailRecipe'">View Detail</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
                 
                 <script>
                 // Buat permintaan HTTP GET ke URL yang ditentukan
-                fetch('/myresep/getByUserAndMyResep', {
+                fetch('/myresep/getRecipeByUserAndBookmark', {
                     method: 'GET', // Metode permintaan
                     headers: {
                         'Content-Type': 'application/json',
@@ -194,9 +181,8 @@
                                 </div>
                                 <div class="card-body text-center">
                                     <h5 class="card-title"><strong>${recipe.name}</strong></h5>
-                                    <div class="button-container">
-                                        <button class="btn btn1" type="button" data-toggle="modal" data-target="#myModal" data-id="${recipe.id}">Delete</button>
-                                        <button class="btn btn2" type="button" onclick="window.location.href='/EditRecipe/${recipe.id}'">Edit</button>
+                                    <div class="button-container d-flex justify-content-center">
+                                        <button class="btn btn2" type="button" onclick="window.location.href='/DetailRecipe/${recipe.id}'">Detail Resep</button>
                                     </div>
                                 </div>
                             </div>
@@ -205,19 +191,7 @@
                         // Append the card to the recipe container
                         recipeContainer.appendChild(cardDiv);
 
-                        // Add event listener to the delete button
-                        const deleteButton = cardDiv.querySelector('.btn1');
-                        deleteButton.addEventListener('click', function() {
-                            const recipeId = this.getAttribute('data-id');
-                            // Confirm deletion
-                            const confirmDelete = confirm("Are you sure you want to delete this recipe?");
-                            if (confirmDelete) {
-                                // Redirect to delete recipe endpoint
-                                window.location.href = `/resep/delete-recipe/${recipe.id}`;
-                                // Show success message
-                                alert("Recipe deleted successfully!");
-                            }
-                        });
+                        
                     });
                 })
                 .catch(error => console.error('Error:', error)); // Tangani kesalahan jika permintaan gagal

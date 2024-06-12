@@ -130,7 +130,9 @@
         <div class="row">
             <div class="col-4">
                 <div class="imgRecipe">
+                    <center>
                     <img src="" alt="Recipe Image" id="recipe-image"> 
+                    </center>
                 </div>
                 <div class="recipe-details">
                     <p class="recipe-name" id="recipe-name"></p>
@@ -189,7 +191,24 @@
 
             $('#bookmarkLink').click(function(e) {
                 e.preventDefault();
-                $(this).toggleClass('active');
+                    const userId = 1; // Replace with actual user ID
+
+                    $.ajax({
+                        url: 'http://127.0.0.1:8000/api/v1/myresep/addBookmark/',
+                        method: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify({
+                            user_id: userId,
+                            resep_id: recipeId
+                        }),
+                        success: function(response) {
+                            alert(response.message);
+                        },
+                        error: function(xhr, status, error) {
+                            console.log("Error:", error);
+                            alert('Failed to bookmark the recipe.');
+                        }
+                    });
             });
         });
 
