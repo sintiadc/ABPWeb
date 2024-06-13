@@ -127,37 +127,38 @@ class RecipeController extends Controller
     }
 
     public function getRecipeByFilter(Request $request)
-    {
-        // Validate the incoming request data
-        $request->validate([
-            'meal' => 'nullable|string',
-            'health' => 'nullable|string',
-        ]);
+{
+    // Validate the incoming request data
+    $request->validate([
+        'meal' => 'nullable|string',
+        'health' => 'nullable|string',
+    ]);
 
-        // Fetch all recipes from the database
-        $query = Resep::query();
+    // Fetch all recipes from the database
+    $query = Resep::query();
 
-        // Apply filtering if 'meal' or 'health' parameters are provided
-        if ($request->has('meal')) {
-            $query->orWhere('meal', $request->input('meal'));
-        }
-
-        if ($request->has('health')) {
-            $query->orWhere('health', $request->input('health'));
-        }
-
-        // Get filtered recipes
-        $recipes = $query->get();
-
-        // Check if there are any recipes
-        if ($recipes->isEmpty()) {
-            // If there are no recipes, return an empty response with a 404 status code
-            return response()->json(['message' => 'No recipes found.'], 404);
-        }
-
-        // If there are recipes, return them as a JSON response with a 200 status code
-        return response()->json($recipes, 200);
+    // Apply filtering if 'meal' or 'health' parameters are provided
+    if ($request->has('meal')) {
+        $query->where('meal', $request->input('meal'));
     }
+
+    if ($request->has('health')) {
+        $query->where('health', $request->input('health'));
+    }
+
+    // Get filtered recipes
+    $recipes = $query->get();
+
+    // Check if there are any recipes
+    if ($recipes->isEmpty()) {
+        // If there are no recipes, return an empty response with a 404 status code
+        return response()->json(['message' => 'No recipes found.'], 404);
+    }
+
+    // If there are recipes, return them as a JSON response with a 200 status code
+    return response()->json($recipes, 200);
+}
+
 
     // Function to update a recipe by ID
     public function updateRecipe(Request $request, $id)

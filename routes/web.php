@@ -104,6 +104,9 @@ Route::middleware(['auth'])->group(function () {
         Auth::logout();
         return redirect('login');
     });
+    // routes/web.php
+Route::get('/get-recipe-filter', [RecipeController::class, 'getRecipeByFilter'])->name('get-recipe-filter');
+
 
 
 Route::get('/', function () {

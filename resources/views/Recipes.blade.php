@@ -124,51 +124,51 @@
     <!-- End Section direktori-->
 
 
-    <!-- Section Filter Recipe -->
-    <div class="container menu">
+<!-- Section Filter Recipe -->
+<div class="container menu">
         <div class="row">
             <div class="col-sm-3 SideBar">
                 <h3><strong>Filter By</strong></h3>
-                <div class="Meal" >
+                <div class="Meal">
                     <h5>Meal</h5>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="mealRadio" id="flexRadioDefault1">
-                        <label class="form-check-label" for="flexRadioDefault1">
+                        <input class="form-check-input" type="radio" name="mealRadio" id="mealBreakfast" value="Breakfast">
+                        <label class="form-check-label" for="mealBreakfast">
                             Breakfast
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="mealRadio" id="flexRadioDefault2" checked>
-                        <label class="form-check-label" for="flexRadioDefault2">
+                        <input class="form-check-input" type="radio" name="mealRadio" id="mealLunch" value="Lunch">
+                        <label class="form-check-label" for="mealLunch">
                             Lunch
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="mealRadio" id="flexRadioDefault2" checked>
-                        <label class="form-check-label" for="flexRadioDefault2">
+                        <input class="form-check-input" type="radio" name="mealRadio" id="mealDinner" value="Dinner">
+                        <label class="form-check-label" for="mealDinner">
                             Dinner
                         </label>
                     </div>
                 </div>
 
-                <div class="Health" >
+                <div class="Health">
                     <h5>Health</h5>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="healthRadio" id="flexRadioDefault1">
-                        <label class="form-check-label" for="flexRadioDefault1">
+                        <input class="form-check-input" type="radio" name="healthRadio" id="healthVegan" value="Vegan">
+                        <label class="form-check-label" for="healthVegan">
                             Vegan
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="healthRadio" id="flexRadioDefault2" checked>
-                        <label class="form-check-label" for="flexRadioDefault2">
-                            Gluten_Free
+                        <input class="form-check-input" type="radio" name="healthRadio" id="healthGlutenFree" value="Gluten_Free">
+                        <label class="form-check-label" for="healthGlutenFree">
+                            Gluten Free
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="healthRadio" id="flexRadioDefault2" checked>
-                        <label class="form-check-label" for="flexRadioDefault2">
-                            Low_Sugar
+                        <input class="form-check-input" type="radio" name="healthRadio" id="healthLowSugar" value="Low_Sugar">
+                        <label class="form-check-label" for="healthLowSugar">
+                            Low Sugar
                         </label>
                     </div>
                 </div>
@@ -179,54 +179,75 @@
             </div>
             <script>
                 $(document).ready(function() {
-                    $.ajax({
-                        url: '{{ route("get-recipe") }}',
-                        method: 'GET',
-                        success: function(data) {
-                            var container = $('#recipe-container');
-                            var content = '';
+                    function fetchRecipes() {
+                        var meal = $('input[name="mealRadio"]:checked').val();
+                        var health = $('input[name="healthRadio"]:checked').val();
 
-                            data.forEach(function(recipe) {
-                                content += `
-                                    <div class="card mb-3">
-                                        <div class="row g-0">
-                                            <div class="col-md-4 image">
-                                                <img src="${recipe.picture}" class="img-fluid rounded-start" alt="${recipe.title}">
-                                            </div>
-                                            <div class="col-md-8">
-                                                <div class="card-body">
-                                                    <h5 class="card-title"><strong>${recipe.name}</strong></h5>
-                                                    <div class="recipe-info">
-                                                        <div class="row">
-                                                            <div class="col">
-                                                                <span>Calories</span></br>
-                                                                <span>Servings</span></br>
-                                                                <span>Prep_Time</span></br>
-                                                                <span>Meal</span></br>
-                                                                <span>Health</span></br>
+                        $.ajax({
+                            url: '{{ route("get-recipe-filter") }}',
+                            method: 'GET',
+                            data: {
+                                meal: meal,
+                                health: health
+                            },
+                            success: function(data) {
+                                var container = $('#recipe-container');
+                                var content = '';
+
+                                if(data.length > 0) {
+                                    data.forEach(function(recipe) {
+                                        content += `
+                                            <div class="card mb-3">
+                                                <div class="row g-0">
+                                                    <div class="col-md-4 image">
+                                                        <img src="${recipe.picture}" class="img-fluid rounded-start" alt="${recipe.title}">
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title"><strong>${recipe.name}</strong></h5>
+                                                            <div class="recipe-info">
+                                                                <div class="row">
+                                                                    <div class="col">
+                                                                        <span>Calories</span></br>
+                                                                        <span>Servings</span></br>
+                                                                        <span>Prep_Time</span></br>
+                                                                        <span>Meal</span></br>
+                                                                        <span>Health</span></br>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <span id="Calories">${recipe.calories}</span></br>
+                                                                        <span id="Servings">${recipe.servings}</span></br>
+                                                                        <span id="PrepTime">${recipe.prep_time}</span></br>
+                                                                        <span id="Meal">${recipe.meal}</span></br>
+                                                                        <span id="Health">${recipe.health}</span></br>                                     
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                            <div class="col">
-                                                                <span id="Calories">${recipe.calories}</span></br>
-                                                                <span id="Servings">${recipe.servings}</span></br>
-                                                                <span id="PrepTime">${recipe.prep_time}</span></br>
-                                                                <span id="Meal">${recipe.meal}</span></br>
-                                                                <span id="Health">${recipe.health}</span></br>                                     
-                                                            </div>
+                                                            <a href="/DetailRecipe/${recipe.id}" id="View" class="view btn ml-auto d-flex justify-content-between">View Details</a>
                                                         </div>
                                                     </div>
-                                                    <a href="/DetailRecipe/${recipe.id}" id="View" class="view btn ml-auto d-flex justify-content-between">View Details</a>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                `;
-                            });
+                                        `;
+                                    });
+                                } else {
+                                    content = '<p>No recipes found.</p>';
+                                }
 
-                            container.html(content);
-                        },
-                        error: function(error) {
-                            console.log("Error fetching recipes:", error);
-                        }
+                                container.html(content);
+                            },
+                            error: function(error) {
+                                console.log("Error fetching recipes:", error);
+                            }
+                        });
+                    }
+
+                    // Fetch all recipes on page load
+                    fetchRecipes();
+
+                    // Fetch recipes based on filter change
+                    $('input[name="mealRadio"], input[name="healthRadio"]').on('change', function() {
+                        fetchRecipes();
                     });
                 });
             </script>
