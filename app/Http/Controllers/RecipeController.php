@@ -77,7 +77,7 @@ class RecipeController extends Controller
         // Call the createMyResep method from MyResepController
         $myResepController->createMyResep($myRequest);
 
-        return response()->json($resep, 201);  // Return the created recipe as JSON with a 201 status code
+        return response()->json($resep, 200);  // Return the created recipe as JSON with a 201 status code
     }
 
 
