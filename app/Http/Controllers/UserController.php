@@ -46,6 +46,27 @@ class UserController extends Controller
         // If there are recipes, return them as a JSON response with a 200 status code
         return response()->json($user, 200);
     }
+
+    public function login_mobile(Request $request)
+{
+    // Validate the request data
+    $request->validate([
+        'email' => 'required|string',
+        'password' => 'required|string',
+    ]);
+
+    // Attempt to find the user by email
+    $user = User::where('email', $request->email)->first();
+
+    // Check if user exists and password matches
+    if ($user) {
+        // Authentication passed, return the user ID
+        return response()->json(['user_id' => $user->id], 200);
+    } else {
+        // Authentication failed, return a 401 unauthorized response
+        return response()->json(['message' => 'Invalid credentials.'], 401);
+    }
+}
     public function getUserById($id)
     {
         // Get the user by ID

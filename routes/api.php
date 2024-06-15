@@ -19,14 +19,15 @@ use App\Http\Controllers\BMRController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
     
-});
+// });
 Route::group(['middleware' => 'api','prefix' => 'v1'], function ($router) {
     Route::post('/resep/create-recipe', [RecipeController::class, 'createRecipe']);
     Route::post('/hitung-bmr', [BMRController::class, 'HitungBMR']);
     Route::post('/user/edit', [UserController::class, 'updateUser']);    
+    Route::post('/user/login_mobile', [UserController::class, 'login_mobile']);
     Route::post('/resep/edit-recipe/{id}', [RecipeController::class, 'updateRecipe']);
     Route::post('/myresep/addBookmark/', [MyResepController::class, 'addBookmark']);
 });
