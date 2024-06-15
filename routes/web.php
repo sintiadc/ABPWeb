@@ -27,6 +27,7 @@ Route::middleware(['auth'])->group(function () {
     });
     #Route::post('/resep/create-recipe', [RecipeController::class, 'createRecipe']);
     Route::get('/resep/get-recipe', [RecipeController::class, 'getRecipe'])->name('get-recipe');
+    Route::get('/resep/getPopularRecipe', [RecipeController::class, 'getPopularRecipe']);
     Route::get('/resep/get-recipe/{id}', [RecipeController::class, 'getRecipeById'])->name('get-recipe-by-id');
     
     Route::get('/resep/update-recipe/{id}', [RecipeController::class, 'updateRecipe']);
@@ -37,7 +38,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/user/create-user', [UserController::class, 'createUser']);
     Route::get('/user/get-user', [UserController::class, 'getUser'])->name('get-user');
-    Route::get('/users/{id}', [UserController::class, 'getUserById']);
+    Route::get('/user/{id}', [UserController::class, 'getUserById']);
     Route::get('/user/update-user/', [UserController::class, 'updateUser']);
     Route::get('/user/delete-user/', [UserController::class, 'deleteUser']);
 

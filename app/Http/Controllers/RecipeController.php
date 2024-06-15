@@ -96,6 +96,22 @@ class RecipeController extends Controller
         return response()->json($recipes, 200);
     }
 
+    public function getPopularRecipe()
+    {
+        // Fetch all recipes from the database and order by 'likes' descending
+        $recipes = Resep::orderByDesc('like')->get();
+
+        // Check if there are any recipes
+        if ($recipes->isEmpty()) {
+            // If there are no recipes, return an empty response with a 404 status code
+            return response()->json(['message' => 'No recipes found.'], 404);
+        }
+
+        // If there are recipes, return them as a JSON response with a 200 status code
+        return response()->json($recipes, 200);
+    }
+
+
     public function getRecipeById($id)
     {
         // Fetch the recipe by its ID from the database
@@ -205,24 +221,21 @@ class RecipeController extends Controller
     }
 
     public function tambahlike($id)
-    {
-        // Find the recipe by ID
-        $recipe = Resep::find($id);
+{
+    // Find the recipe by ID
+    $recipe = Resep::find($id);
 
-        // Check if the recipe exists
-        if (!$recipe) {
-            // If the recipe doesn't exist, return a 404 response
-            return response()->json(['message' => 'Recipe not found.'], 404);
-        }
-
-        // Increment the 'like' count
-        $recipe->increment('like');
-
-        // Return the updated recipe with a success message
-        return response()->json([
-            'message' => 'Like added successfully.',
-            'recipe_name' => $recipe->name,
-            'like_count' => $recipe->like
-        ], 200);
+    // Check if the recipe exists
+    if (!$recipe) {
+        // If the recipe doesn't exist, return a 404 response
+        return response()->json(['message' => 'Recipe not found.'], 404);
     }
+
+    // Increment the 'like' count
+    $recipe->increment('like');
+
+    // Return a simple response with status code 200
+    return response('', 200);
+}
+
 }
