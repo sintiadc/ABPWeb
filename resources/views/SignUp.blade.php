@@ -47,9 +47,9 @@
                                     <input id="email" type="email" class="form-control" name="email" placeholder="Email" />
                                 </div>
                                 <div class="form-group">
-                                    <label for="Name">Nama</label>
+                                    <label for="Name">Name</label>
                                     <!-- Ganti input dengan elemen span -->
-                                    <input id="name" type="name" class="form-control" name="name" placeholder="Nama" />
+                                    <input id="name" type="name" class="form-control" name="name" placeholder="Name" />
                                 </div>
                                 <div class="form-group">
                                     <label for="UserName">User Name</label>
@@ -57,27 +57,27 @@
                                     <input id="username" type="username" class="form-control" name="username" placeholder="User Name" />
                                 </div>
                                 <div class="form-group">
-                                    <label for="Age">Age</label>
+                                    <label for="Umur">Age</label>
                                     <!-- Ganti input dengan elemen span -->
-                                    <input id="Age" type="Age" class="form-control" name="Age" placeholder="Age" />
+                                    <input id="umur" type="umur" class="form-control" name="umur" placeholder="Age" />
                                 </div>
                                 <div class="form-group">
-                                    <label for="Gender">Gender</label>
-                                    <select id="Gender" class="form-control" name="Gender">
+                                    <label for="jenis_kelamin">Gender</label>
+                                    <select id="jenis_kelamin" class="form-control" name="jenis_kelamin">
                                         <option value="" selected disabled>Choose Your Gender</option>
-                                        <option value="Male">Male</option>
-                                        <option value="Female">Female</option>
+                                        <option value="Laki-laki">Male</option>
+                                        <option value="Perempuan">Female</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="Body Weight">Body Weight</label>
+                                    <label for="BeratBadan">Body Weight</label>
                                     <!-- Ganti input dengan elemen span -->
-                                    <input id="BodyWeight" type="BodyWeight" class="form-control" name="BodyWeight" placeholder="Body Weight" />
+                                    <input id="beratbadan" type="beratbadan" class="form-control" name="berat_badan" placeholder="Body Weight" />
                                 </div>
                                 <div class="form-group">
-                                    <label for="BodyHeight">Body Height</label>
+                                    <label for="TinggiBadan">Body Height</label>
                                     <!-- Ganti input dengan elemen span -->
-                                    <input id="BodyHeight" type="BodyHeight" class="form-control" name="BodyHeight" placeholder="BodyHeight" />
+                                    <input id="tinggibadan" type="tinggibadan" class="form-control" name="tinggi_badan" placeholder="Body Height" />
                                 </div>
                                 <div class="form-group">
                                     <label for="Password">Password</label>
